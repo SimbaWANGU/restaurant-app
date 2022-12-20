@@ -71,7 +71,7 @@ const Navbar = (): ReactElement => {
                   <a href='#home'>Contacts</a>
                 </li>
                 <li className='loginMobile'>
-                  <a href='#home'>Contacts</a>
+                  <a href='#home'>Login / Register</a>
                 </li>
               </ul>
             </div>
