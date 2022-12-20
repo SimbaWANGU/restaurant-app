@@ -1,0 +1,79 @@
+@mixin flexDirection ($flex, $direction) {
+  display: $flex;
+  flex-direction: $direction;
+}
+
+.header_container {
+  background-color: var(--color-black);
+  @include flexDirection(flex, row);
+
+  div:nth-of-type(1) {
+    margin: 4rem;
+    width: 50%;
+
+    .subheading_container {
+      margin-bottom: 1rem;
+
+      p:nth-of-type(1) {
+        font-family: var(--font-base);
+        color: var(--color-white);
+        justify-content: flex-start;
+      }
+    }
+
+    h1 {
+      font-family: var(--font-base);
+      color: var(--color-golden);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 90px;
+      font-size: 70px;
+      width: 7em;
+      margin-left: 4rem;
+    }
+
+    .sellPoint {
+      margin: 1rem 0 1rem 4rem;
+      font-family: var(--font-base);
+      color: var(--color-white);
+      letter-spacing: 0.04em;
+      width: 25em;
+    }
+
+    button {
+      margin: 1rem 0 1rem 4rem;
+      border: none;
+      background: var(--color-golden);
+      padding: 0.5rem;
+      width: 10em;
+      border-radius: 100px;
+      font-family: var(--font-alt);
+      font-weight: 400;
+      font-size: 20px;
+      cursor: pointer;
+      transition: 1s ease;
+    }
+
+    button:hover {
+      background: var(--color-golden-dark);
+      transform: scale(1.01);
+      transition: 1s ease;
+      font-size: 20px;
+      outline: 1px solid var(--color-golden);
+    }
+
+    button:active {
+      transform: scale(.9);
+      transition: 1s ease;
+    }
+  }
+
+  div:nth-of-type(2) {
+    width: 40%;
+    
+    img {
+      margin: 7rem 0 0 0;
+      width: 23rem;
+    }
+  }
+}
