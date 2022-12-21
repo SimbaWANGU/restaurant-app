@@ -1,0 +1,54 @@
+@mixin flexDirection ($flex, $direction) {
+  display: $flex;
+  flex-direction: $direction;
+}
+
+.aboutUs_container {
+  position: relative;
+  @include flexDirection(flex, row);
+  background: var(--color-black);
+
+  .backgroundLogo {
+    position: absolute;
+    inset: 0;
+    img {
+      width: 30px;
+      height: 40px;
+      object-fit: contain;
+      z-index: 0;
+    }
+  }
+
+  .foregroundLeft {
+    z-index: 1;
+    flex: 1;
+
+    .subheading_container {
+      p {}
+      img {}
+    }
+    p {}
+    button {}
+  }
+
+  .knifeLogo {
+    z-index: 1;
+    flex: 1;
+    margin-top: 20px;
+
+    img {
+      width: 100px;
+      height: 900px;
+    }
+  }
+
+  .foregroundRight {
+    z-index: 1;
+    .subheading_container {
+      p {}
+      img {}
+    }
+    p {}
+    button {}
+  }  
+}
