@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { SubHeading } from '../../components'
+import SubHeading from '../../components/SubHeading/SubHeading'
 import welcome from './../../assets/welcome.png'
 import './Header.scss'
 
