@@ -11,22 +11,22 @@
 .app__navbar {
   @include flexDirection(flex, row);
   @include justifyAlign(space-between, center);
-
   width: 100%;
   background: var(--color-black);
-  padding: 1rem 2rem;
+  
 
   div {
     @include flexDirection(flex, row);
     @include justifyAlign(flex-start, center);
 
     img {
+      margin: 0 0 0 1rem;
       width: 150px;
       transition: 0.5s ease-in-out;
     }
 
     img:hover {
-      transform: scale(1.15);
+      transform: scale(1.01);
     }
   }
 
@@ -52,6 +52,7 @@
   }
 
   .login {
+    margin-right: 1rem;
     a {
       color: white;
       cursor: pointer;
