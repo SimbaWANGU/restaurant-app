@@ -21,7 +21,7 @@ const AboutUs = (): ReactElement => (
     <div className='foregroundLeft'>
       <SubHeading title='About Us' />
       <p>
-        We're a humble family of people who love seeing you happy.
+        We&apos;re a humble family of people who love seeing you happy.
         Good food and great ambience are part of our philosphy.
         Come dine with us and become a part of the family.
       </p>
