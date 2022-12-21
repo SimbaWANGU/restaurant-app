@@ -20,16 +20,23 @@ const AboutUs = (): ReactElement => (
     </div>
     <div className='foregroundLeft'>
       <SubHeading title='About Us' />
-      <p></p>
-      <button></button>
+      <p>
+        We're a humble family of people who love seeing you happy.
+        Good food and great ambience are part of our philosphy.
+        Come dine with us and become a part of the family.
+      </p>
+      <button>About Us</button>
     </div>
     <div className='knifeLogo'>
       <Image src={Knife} alt='knife' />
     </div>
     <div className='foregroundRight'>
       <SubHeading title='Our History' />
-      <p></p>
-      <button></button>
+      <p>
+        Our patron, Simba Wangu, launched the first Gericht store back in 1998.
+        He envisioned a space where people from different culturescould come together and share.
+      </p>
+      <button>History</button>
     </div>
   </div>
 )

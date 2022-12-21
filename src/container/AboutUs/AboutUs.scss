@@ -1,3 +1,143 @@
-.file{
-  padding: 1px;
+@mixin flexDirection ($flex, $direction) {
+  display: $flex;
+  flex-direction: $direction;
+}
+
+.aboutUs_container {
+  position: relative;
+
+  @include flexDirection(flex, row);
+
+  background: var(--color-black);
+
+  .backgroundLogo {
+    @include flexDirection(flex, column);
+
+    position: absolute;
+    inset: 0;
+
+    img {
+      width: 350px;
+      height: 400px;
+      margin: auto;
+      z-index: 0;
+    }
+  }
+
+  .foregroundLeft {
+    @include flexDirection(flex, column);
+
+    z-index: 1;
+    flex: 2;
+    margin: auto;
+    align-items: flex-end;
+
+    .subheading_container {
+      p {
+        font-size: 34px;
+        color: var(--color-golden);
+        font-family: var(--font-base);
+      }
+
+      img {
+
+      }
+    }
+
+    .subheading_container ~ p {
+      font-family: var(--font-base);
+      color: var(--color-white);
+      text-align: end;
+      width: 60%;
+    }
+    button {
+      margin: 1rem 0;
+      border: none;
+      background: var(--color-golden);
+      padding: 0.5rem;
+      width: 10em;
+      border-radius: 100px;
+      font-family: var(--font-alt);
+      font-weight: 400;
+      font-size: 20px;
+      cursor: pointer;
+      transition: 1s ease;
+    }
+
+    button:hover {
+      background: var(--color-golden-dark);
+      transform: scale(1.01);
+      transition: 1s ease;
+      font-size: 20px;
+      outline: 1px solid var(--color-golden);
+    }
+
+    button:active {
+      transform: scale(0.9);
+      transition: 1s ease;
+    }
+  }
+
+  .knifeLogo {
+    @include flexDirection(flex, column);
+
+    z-index: 1;
+    flex: 1;
+    margin-top: 20px;
+
+    img {
+      width: 100px;
+      height: 900px;
+      margin: auto;
+    }
+  }
+
+  .foregroundRight {
+    z-index: 1;
+    flex: 2;
+    margin: auto;
+
+    .subheading_container {
+      p {
+        font-size: 34px;
+        color: var(--color-golden);
+        font-family: var(--font-base);
+      }
+      img {}
+    }
+
+    .subheading_container ~ p {
+      font-family: var(--font-base);
+      color: var(--color-white);
+      justify-content: flex-start;
+      width: 60%;
+    }
+    
+    button {
+      margin: 1rem 0;
+      border: none;
+      background: var(--color-golden);
+      padding: 0.5rem;
+      width: 10em;
+      border-radius: 100px;
+      font-family: var(--font-alt);
+      font-weight: 400;
+      font-size: 20px;
+      cursor: pointer;
+      transition: 1s ease;
+    }
+
+    button:hover {
+      background: var(--color-golden-dark);
+      transform: scale(1.01);
+      transition: 1s ease;
+      font-size: 20px;
+      outline: 1px solid var(--color-golden);
+    }
+
+    button:active {
+      transform: scale(0.9);
+      transition: 1s ease;
+    }
+  }
 }
