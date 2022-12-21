@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { SubHeading } from '../../components'
+import SubHeading from '../../components/SubHeading/SubHeading'
 import G from './../../assets/G.png'
 import Knife from './../../assets/knife.png'
 import './AboutUs.scss'

@@ -11,9 +11,10 @@
 .app__navbar {
   @include flexDirection(flex, row);
   @include justifyAlign(space-between, center);
+
   width: 100%;
   background: var(--color-black);
-  
+
 
   div {
     @include flexDirection(flex, row);
@@ -53,6 +54,7 @@
 
   .login {
     margin-right: 1rem;
+
     a {
       color: white;
       cursor: pointer;
