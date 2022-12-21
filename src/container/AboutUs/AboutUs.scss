@@ -145,3 +145,61 @@
     }
   }
 }
+
+@media screen and (min-width: 350px) and (max-width: 450px) {
+  .aboutUs_container {
+    .backgroundLogo {
+      img {
+        width: 200px;
+        height: 250px;
+        margin: auto;
+        z-index: 0;
+      }
+    }
+    .foregroundLeft {
+      margin-right: 1rem;
+      .subheading_container{
+        p {
+          font-size: 24px;
+          text-align: end;
+        }
+      }
+      .subheading_container ~ p {
+        max-height: 180px;
+        width: 90%;
+      }
+
+      button {
+        margin-top: 40px;
+        width: 7em;
+        font-size: 14px;
+      }
+    }
+    div:nth-of-type(3) {
+      img {
+        width: 80px;
+        height: 650px;
+        margin: auto;
+      }
+    }
+    .foregroundRight {
+      margin-right: 1rem;
+      .subheading_container{
+        p {
+          font-size: 24px;
+          text-align: start;
+        }
+      }
+      .subheading_container ~ p {
+        max-height: 180px;
+        width: 90%;
+      }
+
+      button {
+        margin-top: 40px;
+        width: 7em;
+        font-size: 14px;
+      }
+    }
+  }
+}
