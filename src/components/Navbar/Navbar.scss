@@ -146,6 +146,29 @@
 
 @media screen and (max-width: 650px) {
   .app__navbar {
+    width: 100%;
+
+    div {
+      img {
+        width: 100px;
+        aspect-ratio: 9/3;
+      }
+    }
+
+    .login a {
+      display: none;
+    }
+
+    .loginMobile {
+      display: block;
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .app__navbar {
+    width: 100%;
+
     div {
       img {
         width: 100px;
