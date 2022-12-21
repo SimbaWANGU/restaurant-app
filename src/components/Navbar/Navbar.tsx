@@ -22,8 +22,6 @@ const Navbar = (): ReactElement => {
     setToggleMenu(false)
   }
 
-  console.log(toggleMenu)
-
   return (
     <nav className='app__navbar'>
       <div>
@@ -71,7 +69,7 @@ const Navbar = (): ReactElement => {
                   <a href='#home'>Contacts</a>
                 </li>
                 <li className='loginMobile'>
-                  <a href='#home'>Contacts</a>
+                  <a href='#home'>Login / Register</a>
                 </li>
               </ul>
             </div>
