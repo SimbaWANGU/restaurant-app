@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { Header } from './container'
+import { AboutUs, Header } from './container'
 import { Navbar } from './components'
 import './App.scss'
 
@@ -8,6 +8,7 @@ const App = (): ReactElement => {
     <div className="App">
       <Navbar />
       <Header />
+      <AboutUs />
     </div>
   )
 }
