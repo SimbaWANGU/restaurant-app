@@ -22,8 +22,6 @@ const Navbar = (): ReactElement => {
     setToggleMenu(false)
   }
 
-  console.log(toggleMenu)
-
   return (
     <nav className='app__navbar'>
       <div>
