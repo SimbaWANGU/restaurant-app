@@ -2,8 +2,8 @@ import React, { ReactElement } from 'react'
 import SubHeading from '../../components/SubHeading/SubHeading'
 import menu from '../../assets/menu.png'
 import './Menu.scss'
-import { wines, cocktails } from '../../constants/data'
 import MenuItem from '../../components/Menuitem/MenuItem'
+import { wines, cocktails } from '../../constants/data'
 
 interface ImageProps {
   src: string
