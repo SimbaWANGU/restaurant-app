@@ -6,10 +6,7 @@
 
 .aboutUs_container {
   position: relative;
-
   @include flexDirection(flex, row);
-
-  background: var(--color-black);
 
   .backgroundLogo {
     @include flexDirection(flex, column);
@@ -90,9 +87,9 @@
     margin-top: 20px;
 
     img {
-      width: 100px;
-      height: 900px;
-      margin: auto;
+      width: 70px;
+      height: 600px;
+      margin: auto auto 3rem;
     }
   }
 
