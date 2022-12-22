@@ -6,6 +6,7 @@
 
 .aboutUs_container {
   position: relative;
+
   @include flexDirection(flex, row);
 
   .backgroundLogo {
