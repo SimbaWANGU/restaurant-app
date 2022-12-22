@@ -32,7 +32,7 @@ const Menu = (): ReactElement => {
       <SubHeading title='Menu That Fits You Palatte' />
       <h2>Today&apos;s Special</h2>
       <div className='menu-section'>
-        <div>
+        <div className='wine-section'>
           <h3>Wine & Beer</h3>
           <div>
             {wines.map((wine: Wine, index: number) => (
@@ -43,7 +43,7 @@ const Menu = (): ReactElement => {
         <div>
           <Image src={menu} alt='mixer' />
         </div>
-        <div>
+        <div className='cocktail-section'>
           <h3>Cocktails</h3>
           <div>
             {cocktails.map((cocktail: Cocktails, index: number) => (
