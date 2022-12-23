@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react'
 import SubHeading from '../../components/SubHeading/SubHeading'
 import chef from './../../assets/chef.png'
+import sign from './../../assets/sign.png'
 import './Chef.scss'
 
 interface ImageProps {
@@ -15,16 +16,18 @@ const Image: React.FC<ImageProps> = ({ src, alt }) => {
 const Chef = (): ReactElement => {
   return (
     <div className='chef_container'>
-      <div>
+      <div className='image_container'>
         <Image src={chef} alt='chef' />
       </div>
       <div>
         <SubHeading title='Chef&apos;s Word' />
         <h2>What We Believe In</h2>
-        <p></p>
+        <p>
+          Without you, we would never exist. For this reason, we are dedicated to make your experience wholsome so that you can keep coming back and that we may have a job!
+        </p>
         <h4>Kevin Luo</h4>
         <p>Chef & Founder</p>
-        <h3>Kevin Luo</h3>
+        <Image src={sign} alt='signature' />
       </div>
     </div>
   )
