@@ -1,0 +1,16 @@
+@mixin flexDirection ($flex, $direction) {
+  display: $flex;
+  flex-direction: $direction;
+  padding: 2rem;
+}
+
+.chef_container {
+  @include flexDirection(flex, row);
+
+  div:nth-of-type(1) {
+    img {
+      height: 300px;
+      width: 300px;
+    }
+  }
+}

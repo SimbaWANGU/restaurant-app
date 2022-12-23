@@ -9,8 +9,6 @@
 
   @include flexDirection(flex, row);
 
-  background: var(--color-black);
-
   .backgroundLogo {
     @include flexDirection(flex, column);
 
