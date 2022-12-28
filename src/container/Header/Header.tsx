@@ -13,7 +13,7 @@ const Image: React.FC<Props> = ({ src, alt }) => {
 }
 
 const Header = (): ReactElement => (
-  <div className='header_container'>
+  <div id='Home' className='header_container'>
     <div>
       <SubHeading title='Chase the New Flavour' />
       <h1>The key to Fine Dining</h1>

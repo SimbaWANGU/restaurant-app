@@ -31,23 +31,23 @@ const Navbar = (): ReactElement => {
       </div>
       <ul>
         <li>
-          <a href='#home'>Home</a>
+          <a href='#Home'>Home</a>
         </li>
         <li>
-          <a href='#home'>About</a>
+          <a href='#About'>About</a>
         </li>
         <li>
-          <a href='#home'>Menu</a>
+          <a href='#Menu'>Menu</a>
         </li>
         <li>
-          <a href='#home'>Awards</a>
+          <a href='#Awards'>Awards</a>
         </li>
         <li>
-          <a href='#home'>Contacts</a>
+          <a href='#Contacts'>Contacts</a>
         </li>
       </ul>
       <div className='login'>
-        <a href='#login'>Login / Register</a>
+        <a href='/authenticate'>Login / Register</a>
       </div>
       <div className='smallScreen'>
         <GiHamburgerMenu className="hamburger" color='#ffffff' fontSize={27} onClick={handleOpen} />
@@ -56,19 +56,19 @@ const Navbar = (): ReactElement => {
               <MdOutlineRestaurantMenu fontSize={27} className='overlay' onClick={handleClose}/>
               <ul>
                 <li>
-                  <a href='#home'>Home</a>
+                  <a href='#Home'>Home</a>
                 </li>
                 <li>
-                  <a href='#home'>About</a>
+                  <a href='#About'>About</a>
                 </li>
                 <li>
-                  <a href='#home'>Menu</a>
+                  <a href='#Menu'>Menu</a>
                 </li>
                 <li>
-                  <a href='#home'>Awards</a>
+                  <a href='#Awards'>Awards</a>
                 </li>
                 <li>
-                  <a href='#home'>Contacts</a>
+                  <a href='#Contacts'>Contacts</a>
                 </li>
                 <li className='loginMobile'>
                   <a href='#home'>Contacts</a>
