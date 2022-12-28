@@ -9,11 +9,15 @@ interface Props {
   alt: string
 }
 
+interface NavProps {
+  handleClick: any
+}
+
 const Image: React.FC<Props> = ({ src, alt }) => {
   return <img src={src} alt={alt} />
 }
 
-const Navbar = (): ReactElement => {
+const Navbar: React.FC<NavProps> = ({ handleClick }): ReactElement => {
   const [toggleMenu, setToggleMenu] = useState(false)
   const handleOpen = (): void => {
     setToggleMenu(true)
@@ -47,7 +51,7 @@ const Navbar = (): ReactElement => {
         </li>
       </ul>
       <div className='login'>
-        <a href='/authenticate'>Login / Register</a>
+        <a href='#' onClick={handleClick}>Login / Register</a>
       </div>
       <div className='smallScreen'>
         <GiHamburgerMenu className="hamburger" color='#ffffff' fontSize={27} onClick={handleOpen} />
