@@ -75,7 +75,7 @@ const Navbar: React.FC<NavProps> = ({ handleClick }): ReactElement => {
                   <a href='#Contacts'>Contacts</a>
                 </li>
                 <li className='loginMobile'>
-                  <a href='#home'>Contacts</a>
+                  <a href='#' onClick={handleClick}>Contacts</a>
                 </li>
               </ul>
             </div>
