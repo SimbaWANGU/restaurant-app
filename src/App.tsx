@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement, useEffect, useState } from 'react'
 import './App.scss'
 import Modal from 'react-modal'
 import Navbar from './components/Navbar/Navbar'
@@ -10,6 +10,20 @@ import Authenticate from './container/Authenticate/Authenticate'
 
 const App = (): ReactElement => {
   const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    const body = document.body
+
+    if (isOpen) {
+      body.style.overflow = 'hidden'
+    } else {
+      body.style.overflow = 'auto'
+    }
+
+    return () => {
+      body.style.overflow = 'auto'
+    }
+  }, [isOpen])
 
   const handleClick = (event: React.MouseEvent): void => {
     event.preventDefault()

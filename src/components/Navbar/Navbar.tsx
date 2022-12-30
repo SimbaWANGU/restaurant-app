@@ -26,8 +26,6 @@ const Navbar: React.FC<NavProps> = ({ handleClick }): ReactElement => {
     setToggleMenu(false)
   }
 
-  console.log(toggleMenu)
-
   return (
     <nav className='app__navbar'>
       <div>
