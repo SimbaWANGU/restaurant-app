@@ -1,5 +1,3 @@
-import { GiCondorEmblem } from "react-icons/gi"
-
 const register = async (username: string, email: string, password: string): Promise<void> => {
   await fetch('https://restaurant-server-twu5.onrender.com/auth/register', {
     method: 'post',
@@ -9,9 +7,12 @@ const register = async (username: string, email: string, password: string): Prom
     body: `username=${username}&email=${email}&password=${password}`
   })
     .then(async (res) => {
-      await res.json()
+      const data = await res.json()
+      console.log(data)
+      return data
     })
-    .then((data) => {
+    .then((res) => {
+      const data = res
       console.log(data)
       return data
     })
