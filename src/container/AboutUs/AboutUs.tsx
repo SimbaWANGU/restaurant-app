@@ -14,7 +14,7 @@ const Image: React.FC<ImageProps> = ({ src, alt }) => {
 }
 
 const AboutUs = (): ReactElement => (
-  <div className='aboutUs_container'>
+  <div id='About' className='aboutUs_container'>
     <div className='backgroundLogo'>
       <Image src={G} alt='G logo' />
     </div>

@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement, useEffect, useState } from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { MdOutlineRestaurantMenu } from 'react-icons/md'
 import gericht from './../../assets/gericht.png'
@@ -9,12 +9,26 @@ interface Props {
   alt: string
 }
 
+interface NavProps {
+  handleClick: any
+}
+
 const Image: React.FC<Props> = ({ src, alt }) => {
   return <img src={src} alt={alt} />
 }
 
-const Navbar = (): ReactElement => {
+const Navbar: React.FC<NavProps> = ({ handleClick }): ReactElement => {
   const [toggleMenu, setToggleMenu] = useState(false)
+  const [userName, setUserName] = useState('')
+
+  useEffect(() => {
+    const data = localStorage.getItem('gericht-user')
+    if (typeof data === 'string') {
+      const loggedInUser = JSON.parse(data)
+      setUserName(loggedInUser.username)
+    }
+  }, [])
+
   const handleOpen = (): void => {
     setToggleMenu(true)
   }
@@ -22,7 +36,13 @@ const Navbar = (): ReactElement => {
     setToggleMenu(false)
   }
 
-  console.log(toggleMenu)
+  // add more effects
+  const handleLogout = (): void => {
+    localStorage.removeItem('gericht-user')
+    setTimeout(() => {
+      window.location.reload()
+    }, 2000)
+  }
 
   return (
     <nav className='app__navbar'>
@@ -31,23 +51,29 @@ const Navbar = (): ReactElement => {
       </div>
       <ul>
         <li>
-          <a href='#home'>Home</a>
+          <a href='#Home'>Home</a>
         </li>
         <li>
-          <a href='#home'>About</a>
+          <a href='#About'>About</a>
         </li>
         <li>
-          <a href='#home'>Menu</a>
+          <a href='#Menu'>Menu</a>
         </li>
         <li>
-          <a href='#home'>Awards</a>
+          <a href='#Awards'>Awards</a>
         </li>
         <li>
-          <a href='#home'>Contacts</a>
+          <a href='#Contacts'>Contacts</a>
         </li>
       </ul>
       <div className='login'>
-        <a href='#login'>Login / Register</a>
+        {(userName === '')
+          ? <a href='#' onClick={handleClick}>Login / Register</a>
+          : <>
+            <a href='#'>{userName}</a>
+            <a href='#' onClick={handleLogout}>Logout</a>
+          </>
+        }
       </div>
       <div className='smallScreen'>
         <GiHamburgerMenu className="hamburger" color='#ffffff' fontSize={27} onClick={handleOpen} />
@@ -56,22 +82,25 @@ const Navbar = (): ReactElement => {
               <MdOutlineRestaurantMenu fontSize={27} className='overlay' onClick={handleClose}/>
               <ul>
                 <li>
-                  <a href='#home'>Home</a>
+                  <a href='#Home'>Home</a>
                 </li>
                 <li>
-                  <a href='#home'>About</a>
+                  <a href='#About'>About</a>
                 </li>
                 <li>
-                  <a href='#home'>Menu</a>
+                  <a href='#Menu'>Menu</a>
                 </li>
                 <li>
-                  <a href='#home'>Awards</a>
+                  <a href='#Awards'>Awards</a>
                 </li>
                 <li>
-                  <a href='#home'>Contacts</a>
+                  <a href='#Contacts'>Contacts</a>
                 </li>
                 <li className='loginMobile'>
-                  <a href='#home'>Contacts</a>
+                {(userName === '')
+                  ? <a href='#' onClick={handleClick}>Login / Register</a>
+                  : <a href='#' onClick={handleLogout}>Logout</a>
+                }
                 </li>
               </ul>
             </div>

@@ -28,7 +28,7 @@ const Image: React.FC<ImageProps> = ({ src, alt }) => {
 
 const Menu = (): ReactElement => {
   return (
-    <div className='menu_container'>
+    <div id='Menu' className='menu_container'>
       <SubHeading title='Menu That Fits You Palatte' />
       <h2>Today&apos;s Special</h2>
       <div className='menu-section'>

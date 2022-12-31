@@ -58,6 +58,7 @@
       color: white;
       cursor: pointer;
       transition: 0.5s ease-in-out;
+      margin-left: 2rem;
     }
 
     a:hover {
@@ -141,7 +142,7 @@
     }
 
     .loginMobile {
-      display: none;
+      display: block;
     }
   }
 }
