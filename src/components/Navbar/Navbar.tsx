@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement, useEffect, useState } from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { MdOutlineRestaurantMenu } from 'react-icons/md'
 import gericht from './../../assets/gericht.png'
@@ -19,11 +19,29 @@ const Image: React.FC<Props> = ({ src, alt }) => {
 
 const Navbar: React.FC<NavProps> = ({ handleClick }): ReactElement => {
   const [toggleMenu, setToggleMenu] = useState(false)
+  const [userName, setUserName] = useState('')
+
+  useEffect(() => {
+    const data = localStorage.getItem('gericht-user')
+    if (typeof data === 'string') {
+      const loggedInUser = JSON.parse(data)
+      setUserName(loggedInUser.username)
+    }
+  }, [])
+
   const handleOpen = (): void => {
     setToggleMenu(true)
   }
   const handleClose = (): void => {
     setToggleMenu(false)
+  }
+
+  // add more effects
+  const handleLogout = (): void => {
+    localStorage.removeItem('gericht-user')
+    setTimeout(() => {
+      window.location.reload()
+    }, 2000)
   }
 
   return (
@@ -49,7 +67,13 @@ const Navbar: React.FC<NavProps> = ({ handleClick }): ReactElement => {
         </li>
       </ul>
       <div className='login'>
-        <a href='#' onClick={handleClick}>Login / Register</a>
+        {(userName === '')
+          ? <a href='#' onClick={handleClick}>Login / Register</a>
+          : <>
+            <a href='#'>{userName}</a>
+            <a href='#' onClick={handleLogout}>Logout</a>
+          </>
+        }
       </div>
       <div className='smallScreen'>
         <GiHamburgerMenu className="hamburger" color='#ffffff' fontSize={27} onClick={handleOpen} />
@@ -73,7 +97,10 @@ const Navbar: React.FC<NavProps> = ({ handleClick }): ReactElement => {
                   <a href='#Contacts'>Contacts</a>
                 </li>
                 <li className='loginMobile'>
-                  <a href='#' onClick={handleClick}>Contacts</a>
+                {(userName === '')
+                  ? <a href='#' onClick={handleClick}>Login / Register</a>
+                  : <a href='#' onClick={handleLogout}>Logout</a>
+                }
                 </li>
               </ul>
             </div>
