@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 @mixin flexDirection ($flex, $direction) {
   display: $flex;
   flex-direction: $direction;
@@ -5,11 +6,13 @@
 
 .chef_container {
   @include flexDirection(flex, row);
+
   padding: 2rem;
 
   .image_container {
     flex: 1;
     margin: 10rem 0;
+
     @include flexDirection(flex, column);
 
     img {
@@ -21,6 +24,7 @@
 
   div:nth-of-type(2) {
     @include flexDirection(flex, column);
+
     flex: 1;
     margin: auto 0;
 
