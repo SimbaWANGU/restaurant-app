@@ -7,19 +7,17 @@
 .authenticate-modal {
   @include flexDirection(flex, row);
 
-  .preForm {
-    flex: 2;
-  }
-
-  hr {
-    height: 80vh;
-    margin: auto;
-  }
-
   .formArea {
     @include flexDirection(flex, column);
-
     flex: 3;
+
+    h2 {
+      margin: 20px auto 0;
+      font-family: var(--font-base);
+      font-weight: 200;
+      color: var(--color-golden);
+      font-size: 28px;
+    }
 
     .buttonArea {
       @include flexDirection(flex, row);
@@ -52,7 +50,7 @@
     }
 
     .formRegister {
-      padding: 3rem;
+      padding: 1rem;
       transition: 1s ease;
 
       form {
