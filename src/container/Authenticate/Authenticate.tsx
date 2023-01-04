@@ -104,12 +104,8 @@ const Authenticate = (): ReactElement => {
   return (
     <div className='authenticate-modal'>
       <Toaster />
-      <div className="preForm">
-        <h2>Welcome to Gericht</h2>
-        <p>Register or Login to make a Reservation</p>
-      </div>
-      <hr color='#dcca87'/>
       <div className='formArea'>
+        <h2>Register or Login to make a Reservation</h2>
         <div className='buttonArea'>
           <button className='active' ref={registerButtonRef} onClick={() => { handleRegisterButtonClick() }}>Register</button>
           <button ref={loginButtonRef} onClick={() => { handleLoginButtonClick() }}>Login</button>
@@ -117,7 +113,7 @@ const Authenticate = (): ReactElement => {
 
         {(isRegistering)
           ? <div className='formRegister'>
-          <form onSubmit={(e) => handleRegistration(e)}>
+          <form onSubmit={(e) => { handleRegistration(e) }}>
             <input
               type='text'
               name='username'
@@ -146,7 +142,7 @@ const Authenticate = (): ReactElement => {
           </form>
         </div>
           : <div className='formLogin'>
-          <form onSubmit={(e) => handleLogin(e)}>
+          <form onSubmit={(e) => { handleLogin(e) }}>
             <input
               type='text'
               name='username'

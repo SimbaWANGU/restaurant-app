@@ -5,18 +5,19 @@ import Knife from './../../assets/knife.png'
 import './AboutUs.scss'
 
 interface ImageProps {
+  data: string
   src: string
   alt: string
 }
 
-const Image: React.FC<ImageProps> = ({ src, alt }) => {
-  return <img src={src} alt={alt} />
+const Image: React.FC<ImageProps> = ({ data, src, alt }) => {
+  return <img data-aos={data} src={src} alt={alt} />
 }
 
 const AboutUs = (): ReactElement => (
   <div id='About' className='aboutUs_container'>
     <div className='backgroundLogo'>
-      <Image src={G} alt='G logo' />
+      <Image data='zoom-in' src={G} alt='G logo' />
     </div>
     <div className='foregroundLeft'>
       <SubHeading title='About Us' />
@@ -28,7 +29,7 @@ const AboutUs = (): ReactElement => (
       <button>About Us</button>
     </div>
     <div className='knifeLogo'>
-      <Image src={Knife} alt='knife' />
+      <Image data='fade-up' src={Knife} alt='knife' />
     </div>
     <div className='foregroundRight'>
       <SubHeading title='Our History' />

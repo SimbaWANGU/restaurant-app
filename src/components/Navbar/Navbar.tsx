@@ -10,14 +10,15 @@ interface Props {
 }
 
 interface NavProps {
-  handleClick: any
+  handleOpenAuthenticationModal: any
+  handleOpenMyReservationsModal: any
 }
 
 const Image: React.FC<Props> = ({ src, alt }) => {
   return <img src={src} alt={alt} />
 }
 
-const Navbar: React.FC<NavProps> = ({ handleClick }): ReactElement => {
+const Navbar: React.FC<NavProps> = ({ handleOpenAuthenticationModal, handleOpenMyReservationsModal }): ReactElement => {
   const [toggleMenu, setToggleMenu] = useState(false)
   const [userName, setUserName] = useState('')
 
@@ -60,7 +61,7 @@ const Navbar: React.FC<NavProps> = ({ handleClick }): ReactElement => {
           <a href='#Menu'>Menu</a>
         </li>
         <li>
-          <a href='#Awards'>Awards</a>
+          <a href='#' onClick={handleOpenMyReservationsModal}>My Reservations</a>
         </li>
         <li>
           <a href='#Contacts'>Contacts</a>
@@ -68,7 +69,7 @@ const Navbar: React.FC<NavProps> = ({ handleClick }): ReactElement => {
       </ul>
       <div className='login'>
         {(userName === '')
-          ? <a href='#' onClick={handleClick}>Login / Register</a>
+          ? <a href='#' onClick={handleOpenAuthenticationModal}>Login / Register</a>
           : <>
             <a href='#'>{userName}</a>
             <a href='#' onClick={handleLogout}>Logout</a>
@@ -91,14 +92,14 @@ const Navbar: React.FC<NavProps> = ({ handleClick }): ReactElement => {
                   <a href='#Menu'>Menu</a>
                 </li>
                 <li>
-                  <a href='#Awards'>Awards</a>
+                  <a href='#' onClick={handleOpenMyReservationsModal}>My Reservations</a>
                 </li>
                 <li>
                   <a href='#Contacts'>Contacts</a>
                 </li>
                 <li className='loginMobile'>
                 {(userName === '')
-                  ? <a href='#' onClick={handleClick}>Login / Register</a>
+                  ? <a href='#' onClick={handleOpenAuthenticationModal}>Login / Register</a>
                   : <a href='#' onClick={handleLogout}>Logout</a>
                 }
                 </li>

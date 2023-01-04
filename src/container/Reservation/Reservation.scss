@@ -10,8 +10,6 @@
   .formArea {
     @include flexDirection(flex, column);
 
-    flex: 3;
-
     h2 {
       margin: 20px auto 0;
       font-family: var(--font-base);
@@ -19,6 +17,8 @@
       color: var(--color-golden);
       font-size: 28px;
     }
+
+    flex: 3;
 
     .buttonArea {
       @include flexDirection(flex, row);
@@ -50,68 +50,9 @@
       }
     }
 
-    .formRegister {
-      padding: 1rem;
-      transition: 1s ease;
-
-      form {
-        @include flexDirection(flex, column);
-
-        width: 60%;
-        margin: auto;
-
-        input {
-          text-align: center;
-          margin: 1rem;
-          padding: 1rem;
-          border: 1px solid var(--color-golden);
-          border-radius: 100px;
-          background: var(--color-black);
-          font-family: var(--font-alt);
-          font-weight: 400;
-          color: var(--color-white);
-          transition: 1s ease;
-        }
-
-        input:hover {
-          border: 1px solid var(--color-golden-dark_);
-          transform: scale(1.1);
-        }
-
-        input[type='submit'] {
-          margin: 1rem auto;
-          width: 50%;
-          padding: 0.5rem;
-          border: none;
-          background: var(--color-golden);
-          border-radius: 100px;
-          font-family: var(--font-alt);
-          font-weight: 400;
-          font-size: 20px;
-          cursor: pointer;
-          transition: 1s ease;
-          color: var(--color-black);
-        }
-
-        input[type='submit']:hover {
-          background: var(--color-golden-dark);
-          color: var(--color-golden);
-          transform: scale(1.01);
-          transition: 1s ease;
-          font-size: 20px;
-          outline: 1px solid var(--color-golden);
-        }
-
-        input[type='submit']:active {
-          transform: scale(0.9);
-          transition: 1s ease;
-        }
-      }
-    }
-
-    .formLogin {
-      transition: 1s ease;
+    .formReservation {
       padding: 3rem;
+      transition: 1s ease;
 
       form {
         @include flexDirection(flex, column);
@@ -125,10 +66,10 @@
           padding: 1rem;
           border: 1px solid var(--color-golden);
           border-radius: 100px;
-          background: var(--color-black);
+          background: var(--color-white);
           font-family: var(--font-alt);
           font-weight: 400;
-          color: var(--color-white);
+          color: var(--color-black);
           transition: 1s ease;
         }
 
@@ -139,7 +80,7 @@
 
         input[type='submit'] {
           margin: 1rem auto;
-          width: 50%;
+          width: 70%;
           padding: 0.5rem;
           border: none;
           background: var(--color-golden);
