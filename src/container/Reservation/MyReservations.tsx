@@ -15,7 +15,7 @@ const MyReservations = (): ReactElement => {
   const [myReservations, setReservations] = useState(Array<Reservations>)
   useEffect(() => {
     if (myReservations.length === 0) {
-      getReservation((data: Reservations[]) => setReservations(data))
+      getReservation((data: Reservations[]) => { setReservations(data) })
         .then(() => {})
         .catch(() => {})
     }
