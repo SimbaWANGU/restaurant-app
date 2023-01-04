@@ -41,7 +41,7 @@ const Reservation = (): ReactElement => {
       <div className='formArea'>
         <h2>Make Your Reservation</h2>
         <div className='formReservation'>
-          <form onSubmit={(e) => handleSubmit(e)}>
+          <form onSubmit={(e) => { handleSubmit(e) }}>
             <input
               type='date'
               name='date'

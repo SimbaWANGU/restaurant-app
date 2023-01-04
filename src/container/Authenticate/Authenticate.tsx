@@ -113,7 +113,7 @@ const Authenticate = (): ReactElement => {
 
         {(isRegistering)
           ? <div className='formRegister'>
-          <form onSubmit={(e) => handleRegistration(e)}>
+          <form onSubmit={(e) => { handleRegistration(e) }}>
             <input
               type='text'
               name='username'
@@ -142,7 +142,7 @@ const Authenticate = (): ReactElement => {
           </form>
         </div>
           : <div className='formLogin'>
-          <form onSubmit={(e) => handleLogin(e)}>
+          <form onSubmit={(e) => { handleLogin(e) }}>
             <input
               type='text'
               name='username'

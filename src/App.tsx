@@ -80,7 +80,7 @@ const App = (): ReactElement => {
     <div className="App">
       <Modal
         isOpen={isAuthenticateModalOpen}
-        onRequestClose={() => setIsAuthenticateModalOpen(false)}
+        onRequestClose={() => { setIsAuthenticateModalOpen(false) }}
         contentLabel="Example Modal"
         style={customStyles}
         >
@@ -88,7 +88,7 @@ const App = (): ReactElement => {
       </Modal>
       <Modal
         isOpen={isReservationModalOpen}
-        onRequestClose={() => setIsReservationModalOpen(false)}
+        onRequestClose={() => { setIsReservationModalOpen(false) }}
         contentLabel="Example Modal"
         style={customStyles}
       >
@@ -96,7 +96,7 @@ const App = (): ReactElement => {
       </Modal>
       <Modal
         isOpen={isMyReservationModalOpen}
-        onRequestClose={() => setIsMyReservationModalOpen(false)}
+        onRequestClose={() => { setIsMyReservationModalOpen(false) }}
         contentLabel="Example Modal"
         style={customStyles2}
         >

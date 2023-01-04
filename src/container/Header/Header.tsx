@@ -38,7 +38,7 @@ const Header: React.FC<HeaderProps> = ({ handleOpenReservationModal, handleOpenA
           Elegant ambience and upscale table setting.
           Come dine with us at Gericht and experience fine dining like never before.
         </p>
-        <button onClick={(e) => handleClick(e)}>Book Now</button>
+        <button onClick={(e) => { handleClick(e) }}>Book Now</button>
       </div>
       <div data-aos="fade-left">
         <Image src={welcome} alt='welcome' />
