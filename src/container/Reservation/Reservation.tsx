@@ -1,4 +1,4 @@
-import React, { ReactElement, createRef, useState, FormEvent } from 'react'
+import React, { ReactElement, createRef, FormEvent } from 'react'
 import { Toaster, toast } from 'react-hot-toast'
 import { makeReservation } from '../../api/reservation'
 import './Reservation.scss'

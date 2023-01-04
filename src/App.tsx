@@ -11,7 +11,6 @@ import Menu from './container/Menu/Menu'
 import Authenticate from './container/Authenticate/Authenticate'
 import Reservation from './container/Reservation/Reservation'
 import MyReservations from './container/Reservation/MyReservations'
-import { QueryClient, QueryClientProvider } from 'react-query'
 
 // ! Complete App
 // todo: Add feedback section
@@ -24,7 +23,6 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 
 const App = (): ReactElement => {
   AOS.init({ duration: 800, easing: 'ease-in-out', once: true })
-  const queryClient = new QueryClient()
   const [isAuthenticateModalOpen, setIsAuthenticateModalOpen] = useState(false)
   const [isReservationModalOpen, setIsReservationModalOpen] = useState(false)
   const [isMyReservationModalOpen, setIsMyReservationModalOpen] = useState(false)
@@ -79,45 +77,43 @@ const App = (): ReactElement => {
   Modal.setAppElement('#root')
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <div className="App">
-        <Modal
-          isOpen={isAuthenticateModalOpen}
-          onRequestClose={() => setIsAuthenticateModalOpen(false)}
-          contentLabel="Example Modal"
-          style={customStyles}
-          >
-          <Authenticate />
-        </Modal>
-        <Modal
-          isOpen={isReservationModalOpen}
-          onRequestClose={() => setIsReservationModalOpen(false)}
-          contentLabel="Example Modal"
-          style={customStyles}
+    <div className="App">
+      <Modal
+        isOpen={isAuthenticateModalOpen}
+        onRequestClose={() => setIsAuthenticateModalOpen(false)}
+        contentLabel="Example Modal"
+        style={customStyles}
         >
-          <Reservation />
-        </Modal>
-        <Modal
-          isOpen={isMyReservationModalOpen}
-          onRequestClose={() => setIsMyReservationModalOpen(false)}
-          contentLabel="Example Modal"
-          style={customStyles2}
-          >
-          <MyReservations />
-        </Modal>
-        <Navbar
-          handleOpenAuthenticationModal={handleOpenAuthenticationModal}
-          handleOpenMyReservationsModal={handleOpenMyReservationsModal}
-          />
-        <Header
-          handleOpenReservationModal={handleOpenReservationModal}
-          handleOpenAuthenticationModal={handleOpenAuthenticationModal}
-          />
-        <AboutUs />
-        <Menu />
-        <Chef />
-      </div>
-    </QueryClientProvider>
+        <Authenticate />
+      </Modal>
+      <Modal
+        isOpen={isReservationModalOpen}
+        onRequestClose={() => setIsReservationModalOpen(false)}
+        contentLabel="Example Modal"
+        style={customStyles}
+      >
+        <Reservation />
+      </Modal>
+      <Modal
+        isOpen={isMyReservationModalOpen}
+        onRequestClose={() => setIsMyReservationModalOpen(false)}
+        contentLabel="Example Modal"
+        style={customStyles2}
+        >
+        <MyReservations />
+      </Modal>
+      <Navbar
+        handleOpenAuthenticationModal={handleOpenAuthenticationModal}
+        handleOpenMyReservationsModal={handleOpenMyReservationsModal}
+        />
+      <Header
+        handleOpenReservationModal={handleOpenReservationModal}
+        handleOpenAuthenticationModal={handleOpenAuthenticationModal}
+        />
+      <AboutUs />
+      <Menu />
+      <Chef />
+    </div>
   )
 }
 
