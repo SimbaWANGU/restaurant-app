@@ -9,6 +9,7 @@
 
   .formArea {
     @include flexDirection(flex, column);
+
     flex: 3;
 
     h2 {

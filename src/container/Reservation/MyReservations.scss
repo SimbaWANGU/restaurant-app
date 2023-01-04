@@ -5,6 +5,7 @@
 
 .empty-reservations {
   @include flexDirection(flex, column);
+
   text-align: center;
 
   h1 {
