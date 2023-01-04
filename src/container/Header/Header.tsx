@@ -1,7 +1,6 @@
 import React, { ReactElement } from 'react'
 import SubHeading from '../../components/SubHeading/SubHeading'
 import welcome from './../../assets/welcome.png'
-import 'animate.css'
 import './Header.scss'
 
 interface Props {
