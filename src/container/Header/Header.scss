@@ -171,7 +171,8 @@
 
     div:nth-of-type(1) {
       margin-top: 20px;
-      margin-left: 50px;
+      
+      @include flexDirection(flex, column);
 
       .subheading_container {
         margin-left: 1px;
@@ -180,9 +181,15 @@
         p:nth-of-type(1) {
           width: 200px;
         }
+
+        img {
+          height:15px;
+          width: 40px;
+        }
       }
 
       h1 {
+        text-align: center;
         margin-left: 1px;
         margin-right: 1px;
         line-height: 75px;
@@ -190,13 +197,14 @@
       }
 
       .sellPoint {
+        text-align: center;
         margin-left: 1px;
         margin-right: 1px;
         width: 300px;
       }
 
       button {
-        margin: 0 auto;
+        margin-left: 4rem;
       }
     }
 
