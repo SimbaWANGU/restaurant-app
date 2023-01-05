@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 @mixin flexDirection ($flex, $direction) {
   display: $flex;
   flex-direction: $direction;
@@ -171,7 +172,7 @@
 
     div:nth-of-type(1) {
       margin-top: 20px;
-      
+
       @include flexDirection(flex, column);
 
       .subheading_container {
@@ -183,7 +184,7 @@
         }
 
         img {
-          height:15px;
+          height: 15px;
           width: 40px;
         }
       }
