@@ -1,3 +1,4 @@
+/* stylelint-disable no-descending-specificity */
 @mixin flexDirection ($flex, $direction) {
   display: $flex;
   flex-direction: $direction;
@@ -84,7 +85,7 @@
   }
 }
 
-@media screen and (min-width: 900px) and (max-width: 1150px) {
+@media screen and (max-width: 1150px) {
   .header_container {
     padding-bottom: 45px;
 
@@ -110,10 +111,6 @@
         margin-right: 1px;
         width: 90%;
       }
-
-      button {
-        margin: 0 0 0 33%;
-      }
     }
 
     div:nth-of-type(2) {
@@ -125,7 +122,7 @@
   }
 }
 
-@media screen and (min-width: 500px) and (max-width: 820px) {
+@media screen and (max-width: 820px) {
   .header_container {
     @include flexDirection(flex, column);
 
@@ -169,13 +166,14 @@
   }
 }
 
-@media screen and (min-width: 350px) and (max-width: 450px) {
+@media screen and (max-width: 450px) {
   .header_container {
     @include flexDirection(flex, column);
 
     div:nth-of-type(1) {
       margin-top: 20px;
-      margin-left: 50px;
+
+      @include flexDirection(flex, column);
 
       .subheading_container {
         margin-left: 1px;
@@ -184,9 +182,15 @@
         p:nth-of-type(1) {
           width: 200px;
         }
+
+        img {
+          height: 15px;
+          width: 40px;
+        }
       }
 
       h1 {
+        text-align: center;
         margin-left: 1px;
         margin-right: 1px;
         line-height: 75px;
@@ -194,13 +198,14 @@
       }
 
       .sellPoint {
+        text-align: center;
         margin-left: 1px;
         margin-right: 1px;
         width: 300px;
       }
 
       button {
-        margin: 0 auto;
+        margin-left: 4rem;
       }
     }
 

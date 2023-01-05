@@ -105,6 +105,7 @@ const App = (): ReactElement => {
       <Navbar
         handleOpenAuthenticationModal={handleOpenAuthenticationModal}
         handleOpenMyReservationsModal={handleOpenMyReservationsModal}
+        setIsMyReservationModalOpen={setIsMyReservationModalOpen}
         />
       <Header
         handleOpenReservationModal={handleOpenReservationModal}
