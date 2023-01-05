@@ -12,13 +12,14 @@ interface Props {
 interface NavProps {
   handleOpenAuthenticationModal: any
   handleOpenMyReservationsModal: any
+  setIsMyReservationModalOpen: any
 }
 
 const Image: React.FC<Props> = ({ src, alt }) => {
   return <img src={src} alt={alt} />
 }
 
-const Navbar: React.FC<NavProps> = ({ handleOpenAuthenticationModal, handleOpenMyReservationsModal }): ReactElement => {
+const Navbar: React.FC<NavProps> = ({ handleOpenAuthenticationModal, handleOpenMyReservationsModal, setIsMyReservationModalOpen }): ReactElement => {
   const [toggleMenu, setToggleMenu] = useState(false)
   const [userName, setUserName] = useState('')
 
@@ -43,6 +44,11 @@ const Navbar: React.FC<NavProps> = ({ handleOpenAuthenticationModal, handleOpenM
     setTimeout(() => {
       window.location.reload()
     }, 2000)
+  }
+
+  const handleMyReservationsClickMobile = (): void => {
+    setIsMyReservationModalOpen(true)
+    setToggleMenu(false)
   }
 
   return (
@@ -92,7 +98,10 @@ const Navbar: React.FC<NavProps> = ({ handleOpenAuthenticationModal, handleOpenM
                   <a href='#Menu'>Menu</a>
                 </li>
                 <li>
-                  <a href='#' onClick={handleOpenMyReservationsModal}>My Reservations</a>
+                  <a href='#' onClick={
+                    handleMyReservationsClickMobile
+                  }
+                  >My Reservations</a>
                 </li>
                 <li>
                   <a href='#Contacts'>Contacts</a>
