@@ -1,3 +1,6 @@
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 const makeReservation = async (username: string, date: string, time: string, guests: number, toast: any): Promise<any> => {
   const response = await fetch('https://restaurant-server-twu5.onrender.com/reserve/create', {
     method: 'post',
@@ -33,13 +36,41 @@ const getReservation = async (): Promise<any> => {
   switch (response.status) {
     case 200:
       data = await response.json()
+      if (data.myReservations.length > 0) {
+        toast.success('Gotten your reservations', {
+          position: 'top-center',
+          autoClose: false,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark'
+        })
+      } else {
+        toast.success('You don&apos;t have any reservations yet...', {
+          position: 'top-center',
+          autoClose: false,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark'
+        })
+      }
       return data.myReservations
-      // if (data.success === 'Resevation has been created') {
-      //   toast.success(data.success)
-      // } else if (data.error === 'An error occurred' || data.error === 'Incomplete Reservation') {
-      //   toast.error(data.error)
-      // }
     case 500:
+      toast.error('An error occurred, Please try again', {
+        position: 'top-center',
+        autoClose: false,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark'
+      })
       return 'Error'
   }
 }
