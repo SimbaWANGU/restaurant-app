@@ -1,5 +1,7 @@
 import React, { ReactElement, FormEvent, useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
+import { useMutation, useQueryClient } from 'react-query'
+import { makeReservation } from '../../api/reservation'
 import './Reservation.scss'
 
 const Reservation = (): ReactElement => {
@@ -12,6 +14,24 @@ const Reservation = (): ReactElement => {
     const user = JSON.parse(localStorage.getItem('gericht-user') as string)
     setUsername(user.username)
   }, [])
+
+  const creatingReservation = async (): Promise<void> => {
+    await makeReservation(username, date, time, guests as number)
+    setDate('')
+    setTime('')
+    setDate('')
+  }
+
+  const useAddReservation = (): any => {
+    const queryClient = useQueryClient()
+    return useMutation(creatingReservation, {
+      onSuccess: async () => {
+        await queryClient.invalidateQueries('reservations')
+      }
+    })
+  }
+
+  const { mutate: addReservationToDb } = useAddReservation()
 
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault()
@@ -26,6 +46,7 @@ const Reservation = (): ReactElement => {
       theme: 'dark',
       toastId: 'createReservationToast'
     })
+    addReservationToDb()
   }
 
   return (
