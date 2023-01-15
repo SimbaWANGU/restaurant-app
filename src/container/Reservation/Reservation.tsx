@@ -1,43 +1,59 @@
-import React, { ReactElement, createRef, FormEvent } from 'react'
-import { Toaster, toast } from 'react-hot-toast'
+import React, { ReactElement, FormEvent, useState, useEffect } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import { useMutation, useQueryClient } from 'react-query'
 import { makeReservation } from '../../api/reservation'
 import './Reservation.scss'
 
 const Reservation = (): ReactElement => {
-  const dateRef = createRef<HTMLInputElement>()
-  const timeRef = createRef<HTMLInputElement>()
-  const guestsRef = createRef<HTMLInputElement>()
-  let username = ''
+  const [date, setDate] = useState('')
+  const [time, setTime] = useState('')
+  const [guests, setGuests] = useState<number>()
+  const [username, setUsername] = useState('')
 
-  const resetRef = (): void => {
-    (dateRef.current as HTMLInputElement).value = '';
-    (timeRef.current as HTMLInputElement).value = '';
-    (guestsRef.current as HTMLInputElement).value = ''
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('gericht-user') as string)
+    setUsername(user.username)
+  }, [])
+
+  const creatingReservation = async (): Promise<void> => {
+    await makeReservation(username, date, time, guests as number)
+    setDate('')
+    setTime('')
+    setDate('')
   }
+
+  const useAddReservation = (): any => {
+    const queryClient = useQueryClient()
+    return useMutation(creatingReservation, {
+      onSuccess: async () => {
+        await queryClient.invalidateQueries('reservations')
+        setTimeout(() => {
+          window.location.reload()
+        }, 2000)
+      }
+    })
+  }
+
+  const { mutate: addReservationToDb } = useAddReservation()
 
   const handleSubmit = (e: FormEvent): void => {
     e.preventDefault()
-    const date = dateRef.current?.value as string
-    const time = timeRef.current?.value as string
-    const guests = guestsRef.current?.value as string
-    const user = JSON.parse(localStorage.getItem('gericht-user') as string)
-    username = user.username
-
-    resetRef()
-
-    toast('Creating Reservation...', {
-      icon: '🕐'
+    toast.info('Creating your reservation. Please wait...', {
+      position: 'top-center',
+      autoClose: false,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+      toastId: 'createReservationToast'
     })
-    makeReservation(username, date, time, Number(guests), toast)
-      .then(() => {
-        window.location.reload()
-      })
-      .catch(() => {})
+    addReservationToDb()
   }
 
   return (
     <div className='authenticate-modal'>
-      <Toaster />
       <div className='formArea'>
         <h2>Make Your Reservation</h2>
         <div className='formReservation'>
@@ -45,20 +61,23 @@ const Reservation = (): ReactElement => {
             <input
               type='date'
               name='date'
-              ref={dateRef}
+              value={date}
+              onChange={(e) => { setDate(e.target.value) }}
               required
             />
             <input
               type='time'
               name='time'
-              ref={timeRef}
+              value={time}
+              onChange={(e) => { setTime(e.target.value) }}
               required
             />
             <input
               type='number'
               name='guests'
               placeholder='Number of guests...'
-              ref={guestsRef}
+              value={guests}
+              onChange={(e) => { setGuests(Number(e.target.value)) }}
               required
             />
             <input
@@ -68,6 +87,7 @@ const Reservation = (): ReactElement => {
           </form>
         </div>
       </div>
+      <ToastContainer />
     </div>
   )
 }
