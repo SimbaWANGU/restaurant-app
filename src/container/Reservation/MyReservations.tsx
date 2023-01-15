@@ -18,7 +18,7 @@ const MyReservations = (): ReactElement => {
     return await getReservation()
   })
 
-  if (isLoading ?? false) {
+  if (isLoading !== undefined && isLoading !== null) {
     return (
       <div className='empty-reservations'>
         <h1>
@@ -28,7 +28,7 @@ const MyReservations = (): ReactElement => {
     )
   }
 
-  if (isError ?? false) {
+  if (isError !== undefined && isError !== null) {
     toast.error('An error occurred. Please try again...', {
       position: 'top-center',
       autoClose: false,
