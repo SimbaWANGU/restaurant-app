@@ -14,11 +14,11 @@ interface Reservations {
 }
 
 const MyReservations = (): ReactElement => {
-  const { isLoading, data, isError } = useQuery('reservations', async () => {
+  const { data, status } = useQuery('reservations', async () => {
     return await getReservation()
   })
 
-  if (isLoading !== undefined && isLoading !== null) {
+  if (status === 'loading') {
     return (
       <div className='empty-reservations'>
         <h1>
@@ -28,7 +28,7 @@ const MyReservations = (): ReactElement => {
     )
   }
 
-  if (isError !== undefined && isError !== null) {
+  if (status === 'error') {
     toast.error('An error occurred. Please try again...', {
       position: 'top-center',
       autoClose: false,
