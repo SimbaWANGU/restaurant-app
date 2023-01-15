@@ -1,4 +1,5 @@
 import React, { ReactElement, createRef, useState, FormEvent } from 'react'
+import { useMutation } from 'react-query'
 import { ToastContainer, toast } from 'react-toastify'
 import { login, register } from '../../api/authentication'
 import './Authenticate.scss'
@@ -25,12 +26,60 @@ const Authenticate = (): ReactElement => {
     loginButtonRef.current?.classList.add('active')
   }
 
+  const registeringUser = async (): Promise<void> => {
+    await register(nameRegister, emailRegister, passwordRegister)
+    setNameRegister('')
+    setEmailRegister('')
+    setPasswordRegister('')
+  }
+
+  const loginUser = async (): Promise<void> => {
+    await login(nameLogin, passwordLogin)
+    setNameLogin('')
+    setPasswordLogin('')
+  }
+
+  const useAddRegisteration = (): any => {
+    return useMutation(registeringUser)
+  }
+
+  const useAddLogin = (): any => {
+    return useMutation(loginUser)
+  }
+
+  const { mutate: registerUserToDb } = useAddRegisteration()
+  const { mutate: loginUserToDb } = useAddLogin()
+
   const handleRegistration = (e: FormEvent): void => {
     e.preventDefault()
+    toast.info('Creating new client, Please wait...', {
+      position: 'top-center',
+      autoClose: false,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+      toastId: 'createUserToast'
+    })
+    registerUserToDb()
   }
 
   const handleLogin = (e: FormEvent): void => {
     e.preventDefault()
+    toast.info('Creating new client, Please wait...', {
+      position: 'top-center',
+      autoClose: false,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+      toastId: 'loginUserToast'
+    })
+    loginUserToDb()
   }
 
   return (
