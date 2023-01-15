@@ -1,15 +1,16 @@
 import React, { ReactElement, createRef, useState, FormEvent } from 'react'
-import { Toaster, toast } from 'react-hot-toast'
+import { useMutation } from 'react-query'
+import { ToastContainer, toast } from 'react-toastify'
 import { login, register } from '../../api/authentication'
 import './Authenticate.scss'
 
 const Authenticate = (): ReactElement => {
   const [isRegistering, setIsRegistering] = useState(true)
-  const nameRef = createRef<HTMLInputElement>()
-  const emailRef = createRef<HTMLInputElement>()
-  const passRef = createRef<HTMLInputElement>()
-  const nameRefLogin = createRef<HTMLInputElement>()
-  const passRefLogin = createRef<HTMLInputElement>()
+  const [nameRegister, setNameRegister] = useState('')
+  const [emailRegister, setEmailRegister] = useState('')
+  const [passwordRegister, setPasswordRegister] = useState('')
+  const [nameLogin, setNameLogin] = useState('')
+  const [passwordLogin, setPasswordLogin] = useState('')
   const registerButtonRef = createRef<HTMLButtonElement>()
   const loginButtonRef = createRef<HTMLButtonElement>()
 
@@ -25,85 +26,76 @@ const Authenticate = (): ReactElement => {
     loginButtonRef.current?.classList.add('active')
   }
 
-  const resetRef = (): void => {
-    (nameRef.current as HTMLInputElement).value = '';
-    (emailRef.current as HTMLInputElement).value = '';
-    (passRef.current as HTMLInputElement).value = ''
+  const registeringUser = async (): Promise<void> => {
+    await register(nameRegister, emailRegister, passwordRegister)
+    setNameRegister('')
+    setEmailRegister('')
+    setPasswordRegister('')
   }
 
-  const resetRefLogin = (): void => {
-    (nameRefLogin.current as HTMLInputElement).value = '';
-    (passRefLogin.current as HTMLInputElement).value = ''
+  const loginUser = async (): Promise<void> => {
+    await login(nameLogin, passwordLogin)
+    setNameLogin('')
+    setPasswordLogin('')
   }
 
-  const handleRegistration = (e: FormEvent): void => {
-    e.preventDefault()
-    const username = nameRef.current?.value as string
-    const email = emailRef.current?.value as string
-    const password = passRef.current?.value as string
-    resetRef()
-    toast.promise(
-      register(username, email, password), {
-        loading: 'Saving...',
-        success: 'New User Created',
-        error: 'An error occurred, Please try again'
-      }, {
-        style: {
-          border: '1px solid #dcca87',
-          padding: '16px',
-          color: '#dcca87'
-        },
-        iconTheme: {
-          primary: '#dcca87',
-          secondary: '#FFFAEE'
-        }
-      }
-    )
-      .then(() => {
+  const useAddRegisteration = (): any => {
+    return useMutation(registeringUser, {
+      onSuccess: async () => {
         setTimeout(() => {
           window.location.reload()
         }, 2000)
-      })
-      .catch((err: Error) => {
-        console.log(err)
-      })
+      }
+    })
+  }
+
+  const useAddLogin = (): any => {
+    return useMutation(loginUser, {
+      onSuccess: async () => {
+        setTimeout(() => {
+          window.location.reload()
+        }, 2000)
+      }
+    })
+  }
+
+  const { mutate: registerUserToDb } = useAddRegisteration()
+  const { mutate: loginUserToDb } = useAddLogin()
+
+  const handleRegistration = (e: FormEvent): void => {
+    e.preventDefault()
+    toast.info('Creating new client, Please wait...', {
+      position: 'top-center',
+      autoClose: false,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+      toastId: 'createUserToast'
+    })
+    registerUserToDb()
   }
 
   const handleLogin = (e: FormEvent): void => {
     e.preventDefault()
-    const username = nameRefLogin.current?.value as string
-    const password = passRefLogin.current?.value as string
-    resetRefLogin()
-    toast.promise(
-      login(username, password), {
-        loading: 'Authenticating, Just a minute...',
-        success: 'You have been logged in',
-        error: 'An error occurred, Please try again'
-      }, {
-        style: {
-          border: '1px solid #dcca87',
-          padding: '16px',
-          color: '#dcca87'
-        },
-        iconTheme: {
-          primary: '#dcca87',
-          secondary: '#FFFAEE'
-        }
-      }
-    )
-      .then(() => {
-        setTimeout(() => {
-          window.location.reload()
-        }, 2000)
-      })
-      .catch((err: Error) => {
-        console.log(err)
-      })
+    toast.info('Logging In, Please wait...', {
+      position: 'top-center',
+      autoClose: false,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+      toastId: 'loginUserToast'
+    })
+    loginUserToDb()
   }
 
   return (
     <div className='authenticate-modal'>
-      <Toaster />
       <div className='formArea'>
         <h2>Register or Login to make a Reservation</h2>
         <div className='buttonArea'>
@@ -118,21 +110,24 @@ const Authenticate = (): ReactElement => {
               type='text'
               name='username'
               placeholder='Enter Username...'
-              ref={nameRef}
+              value={nameRegister}
+              onChange={(e) => { setNameRegister(e.target.value) }}
               required
             />
             <input
               type='email'
               name='email'
               placeholder='Enter Email...'
-              ref={emailRef}
+              value={emailRegister}
+              onChange={(e) => { setEmailRegister(e.target.value) }}
               required
             />
             <input
               type='password'
               name='password'
               placeholder='Enter Password...'
-              ref={passRef}
+              value={passwordRegister}
+              onChange={(e) => { setPasswordRegister(e.target.value) }}
               required
             />
             <input
@@ -147,13 +142,17 @@ const Authenticate = (): ReactElement => {
               type='text'
               name='username'
               placeholder='Enter Username...'
-              ref={nameRefLogin}
+              value={nameLogin}
+              onChange={(e) => { setNameLogin(e.target.value) }}
+              required
             />
             <input
               type='password'
               name='password'
               placeholder='Enter Password...'
-              ref={passRefLogin}
+              value={passwordLogin}
+              onChange={(e) => { setPasswordLogin(e.target.value) }}
+              required
             />
             <input
               type='submit'
@@ -163,6 +162,7 @@ const Authenticate = (): ReactElement => {
         </div>
         }
       </div>
+      <ToastContainer />
     </div>
   )
 }

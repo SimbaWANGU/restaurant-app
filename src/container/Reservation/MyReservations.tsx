@@ -1,4 +1,6 @@
-import React, { ReactElement, useEffect, useState } from 'react'
+import React, { ReactElement } from 'react'
+import { useQuery } from 'react-query'
+import { ToastContainer, toast } from 'react-toastify'
 import { getReservation } from '../../api/reservation'
 import './MyReservations.scss'
 
@@ -12,18 +14,44 @@ interface Reservations {
 }
 
 const MyReservations = (): ReactElement => {
-  const [myReservations, setReservations] = useState(Array<Reservations>)
-  useEffect(() => {
-    if (myReservations.length === 0) {
-      getReservation((data: Reservations[]) => { setReservations(data) })
-        .then(() => {})
-        .catch(() => {})
-    }
-  }, [])
+  const { isLoading, data, isError } = useQuery('reservations', async () => {
+    return await getReservation()
+  })
+
+  if (isLoading !== undefined && isLoading !== null) {
+    return (
+      <div className='empty-reservations'>
+        <h1>
+          Please wait while we get your reservations...
+        </h1>
+      </div>
+    )
+  }
+
+  if (isError !== undefined && isError !== null) {
+    toast.error('An error occurred. Please try again...', {
+      position: 'top-center',
+      autoClose: false,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      theme: 'dark'
+    })
+
+    return (
+      <div className='empty-reservations'>
+        <h1>
+          Cannot retrieve your reservations at this time
+        </h1>
+        <ToastContainer />
+      </div>
+    )
+  }
 
   return (
     <>
-      {myReservations.length === 0
+      {data.length === 0
         ? (
           <div className='empty-reservations'>
             <h1>
@@ -33,7 +61,7 @@ const MyReservations = (): ReactElement => {
           )
         : (
           <div className='myreservations-container'>
-            {myReservations.map(item => (
+            {data.map((item: Reservations) => (
               <div data-aos="flip-up" key={item._id}>
                 <p>{item.date}</p>
                 <p>{item.time} HRS</p>
@@ -43,6 +71,7 @@ const MyReservations = (): ReactElement => {
           </div>
           )
       }
+      <ToastContainer />
     </>
   )
 }
