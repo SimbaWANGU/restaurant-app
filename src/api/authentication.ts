@@ -1,3 +1,6 @@
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 const register = async (username: string, email: string, password: string): Promise<any> => {
   const response = await fetch('https://restaurant-server-twu5.onrender.com/auth/register', {
     method: 'post',
@@ -10,9 +13,58 @@ const register = async (username: string, email: string, password: string): Prom
   switch (response.status) {
     case 200:
       data = await response.json()
-      localStorage.setItem('gericht-user', JSON.stringify(data))
-      return data.message
+      if (data.message === 'You have created a new account') {
+        toast.update('createUserToast', {
+          autoClose: 5000,
+          render: data.success,
+          type: toast.TYPE.SUCCESS,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark'
+        })
+        localStorage.setItem('gericht-user', JSON.stringify(data))
+      } else {
+        toast.update('createUserToast', {
+          autoClose: 5000,
+          render: 'An error occurred',
+          type: toast.TYPE.ERROR,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark'
+        })
+      }
+      break
+    case 400:
+      toast.update('createUserToast', {
+        render: 'You don&apos;t have access',
+        autoClose: 5000,
+        type: toast.TYPE.ERROR,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark'
+      })
+      break
     case 500:
+      toast.update('createUserToast', {
+        autoClose: 5000,
+        render: 'An error occurred',
+        type: toast.TYPE.ERROR,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark'
+      })
       return 'Error'
   }
 }
@@ -29,10 +81,59 @@ const login = async (username: string, password: string): Promise<any> => {
   switch (response.status) {
     case 200:
       data = await response.json()
-      localStorage.setItem('gericht-user', JSON.stringify(data))
-      return data.message
+      if (data.message === 'You have access') {
+        toast.update('loginUserToast', {
+          autoClose: 5000,
+          render: data.message,
+          type: toast.TYPE.SUCCESS,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark'
+        })
+        localStorage.setItem('gericht-user', JSON.stringify(data))
+      } else {
+        toast.update('loginUserToast', {
+          autoClose: 5000,
+          render: 'An error occurred',
+          type: toast.TYPE.ERROR,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark'
+        })
+      }
+      break
+    case 400:
+      toast.update('loginUserToast', {
+        render: 'You don&apos;t have access',
+        autoClose: 5000,
+        type: toast.TYPE.ERROR,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark'
+      })
+      break
     case 500:
-      return 'Error'
+      toast.update('loginUserToast', {
+        render: 'An error occurred, this is not your fault',
+        autoClose: 5000,
+        type: toast.TYPE.ERROR,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark'
+      })
+      break
   }
 }
 

@@ -40,11 +40,23 @@ const Authenticate = (): ReactElement => {
   }
 
   const useAddRegisteration = (): any => {
-    return useMutation(registeringUser)
+    return useMutation(registeringUser, {
+      onSuccess: async () => {
+        setTimeout(() => {
+          window.location.reload()
+        }, 2000)
+      }
+    })
   }
 
   const useAddLogin = (): any => {
-    return useMutation(loginUser)
+    return useMutation(loginUser, {
+      onSuccess: async () => {
+        setTimeout(() => {
+          window.location.reload()
+        }, 2000)
+      }
+    })
   }
 
   const { mutate: registerUserToDb } = useAddRegisteration()
@@ -55,7 +67,7 @@ const Authenticate = (): ReactElement => {
     toast.info('Creating new client, Please wait...', {
       position: 'top-center',
       autoClose: false,
-      hideProgressBar: false,
+      hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
@@ -68,10 +80,10 @@ const Authenticate = (): ReactElement => {
 
   const handleLogin = (e: FormEvent): void => {
     e.preventDefault()
-    toast.info('Creating new client, Please wait...', {
+    toast.info('Logging In, Please wait...', {
       position: 'top-center',
       autoClose: false,
-      hideProgressBar: false,
+      hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,

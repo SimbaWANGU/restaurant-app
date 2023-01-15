@@ -27,6 +27,9 @@ const Reservation = (): ReactElement => {
     return useMutation(creatingReservation, {
       onSuccess: async () => {
         await queryClient.invalidateQueries('reservations')
+        setTimeout(() => {
+          window.location.reload()
+        }, 2000)
       }
     })
   }
@@ -38,7 +41,7 @@ const Reservation = (): ReactElement => {
     toast.info('Creating your reservation. Please wait...', {
       position: 'top-center',
       autoClose: false,
-      hideProgressBar: false,
+      hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
