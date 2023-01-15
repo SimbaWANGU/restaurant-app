@@ -62,14 +62,14 @@ const Reservation = (): ReactElement => {
               type='date'
               name='date'
               value={date}
-              onChange={(e) => setDate(e.target.value)}
+              onChange={(e) => { setDate(e.target.value) }}
               required
             />
             <input
               type='time'
               name='time'
               value={time}
-              onChange={(e) => setTime(e.target.value)}
+              onChange={(e) => { setTime(e.target.value) }}
               required
             />
             <input
@@ -77,7 +77,7 @@ const Reservation = (): ReactElement => {
               name='guests'
               placeholder='Number of guests...'
               value={guests}
-              onChange={(e) => setGuests(Number(e.target.value))}
+              onChange={(e) => { setGuests(Number(e.target.value)) }}
               required
             />
             <input

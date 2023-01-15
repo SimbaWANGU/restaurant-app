@@ -111,7 +111,7 @@ const Authenticate = (): ReactElement => {
               name='username'
               placeholder='Enter Username...'
               value={nameRegister}
-              onChange={(e) => setNameRegister(e.target.value)}
+              onChange={(e) => { setNameRegister(e.target.value) }}
               required
             />
             <input
@@ -119,7 +119,7 @@ const Authenticate = (): ReactElement => {
               name='email'
               placeholder='Enter Email...'
               value={emailRegister}
-              onChange={(e) => setEmailRegister(e.target.value)}
+              onChange={(e) => { setEmailRegister(e.target.value) }}
               required
             />
             <input
@@ -127,7 +127,7 @@ const Authenticate = (): ReactElement => {
               name='password'
               placeholder='Enter Password...'
               value={passwordRegister}
-              onChange={(e) => setPasswordRegister(e.target.value)}
+              onChange={(e) => { setPasswordRegister(e.target.value) }}
               required
             />
             <input
@@ -143,7 +143,7 @@ const Authenticate = (): ReactElement => {
               name='username'
               placeholder='Enter Username...'
               value={nameLogin}
-              onChange={(e) => setNameLogin(e.target.value)}
+              onChange={(e) => { setNameLogin(e.target.value) }}
               required
             />
             <input
@@ -151,7 +151,7 @@ const Authenticate = (): ReactElement => {
               name='password'
               placeholder='Enter Password...'
               value={passwordLogin}
-              onChange={(e) => setPasswordLogin(e.target.value)}
+              onChange={(e) => { setPasswordLogin(e.target.value) }}
               required
             />
             <input
