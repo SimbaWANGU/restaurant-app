@@ -1,11 +1,12 @@
 @mixin flexDirection ($flex, $direction) {
   display: $flex;
   flex-direction: $direction;
-  background-color: var(--color-black)
+  background-color: var(--color-black);
 }
 
 .video-container {
   @include flexDirection(flex, column);
+
   height: 100%;
   width: 100%;
   padding: 5rem;
