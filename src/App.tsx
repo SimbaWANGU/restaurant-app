@@ -12,20 +12,20 @@ import Menu from './container/Menu/Menu'
 import Authenticate from './container/Authenticate/Authenticate'
 import Reservation from './container/Reservation/Reservation'
 import MyReservations from './container/Reservation/MyReservations'
+import Video from './container/Video/Video'
 
 // ! Complete App
 // todo: Add feedback section
 // todo: Add footer
 // todo: Add video section
 // todo: Add mobile and tablet versions
-// todo: Check login responses
 // todo: Add animations
 // todo: Add menu
 
 const queryClient = new QueryClient()
 
 const App = (): ReactElement => {
-  AOS.init({ duration: 800, easing: 'ease-in-out', once: true })
+  AOS.init({ duration: 800, easing: 'ease-in-out', once: false })
   const [isAuthenticateModalOpen, setIsAuthenticateModalOpen] = useState(false)
   const [isReservationModalOpen, setIsReservationModalOpen] = useState(false)
   const [isMyReservationModalOpen, setIsMyReservationModalOpen] = useState(false)
@@ -118,6 +118,7 @@ const App = (): ReactElement => {
         <AboutUs />
         <Menu />
         <Chef />
+        <Video />
       </div>
     </QueryClientProvider>
   )

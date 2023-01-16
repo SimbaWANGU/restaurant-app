@@ -1,8 +1,11 @@
 import React, { ReactElement, useEffect, useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { MdOutlineRestaurantMenu } from 'react-icons/md'
 import gericht from './../../assets/gericht.png'
 import './Navbar.scss'
+import { useMutation } from 'react-query'
+import { logout } from '../../api/authentication'
 
 interface Props {
   src: string
@@ -38,12 +41,33 @@ const Navbar: React.FC<NavProps> = ({ handleOpenAuthenticationModal, handleOpenM
     setToggleMenu(false)
   }
 
+  const useLogoutUser = (): any => {
+    return useMutation(logout, {
+      onSuccess: async () => {
+        setTimeout(() => {
+          window.location.reload()
+        }, 2000)
+      }
+    })
+  }
+
+  const { mutate: logoutUserFromDb } = useLogoutUser()
+
   // add more effects
   const handleLogout = (): void => {
+    toast.info('Logging Out, Please wait...', {
+      position: 'top-center',
+      autoClose: false,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark',
+      toastId: 'logOutUserToast'
+    })
     localStorage.removeItem('gericht-user')
-    setTimeout(() => {
-      window.location.reload()
-    }, 2000)
+    logoutUserFromDb()
   }
 
   const handleMyReservationsClickMobile = (): void => {
@@ -117,6 +141,7 @@ const Navbar: React.FC<NavProps> = ({ handleOpenAuthenticationModal, handleOpenM
           : null
          }
       </div>
+      <ToastContainer />
     </nav>
   )
 }
