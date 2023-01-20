@@ -14,7 +14,7 @@ const Feedback = (): ReactElement => {
         loop={true}
         autoplay={{
           delay: 2500,
-          disableOnInteraction: false
+          disableOnInteraction: true
         }}
         modules={[Autoplay]}
       >
@@ -54,6 +54,9 @@ const Feedback = (): ReactElement => {
           </div>
         </SwiperSlide>
       </Swiper>
+      <div className='button-area'>
+        <button>Add Feeback</button>
+      </div>
     </div>
   )
 }

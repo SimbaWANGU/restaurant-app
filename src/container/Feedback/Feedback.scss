@@ -5,7 +5,7 @@
 
 .feedback-container {
   margin: auto;
-  height: 70vh;
+  height: 80vh;
   width: 90vw;
   color: white;
   overflow: hidden;
@@ -42,11 +42,43 @@
     }
 
     span {
-      
+
     }
   }
 
   .slide-container:hover {
     transform: scale(1.05);
+  }
+
+  .button-area {
+    @include flexDirection(flex, column);
+
+    button {
+      margin: 1rem auto;
+      border: none;
+      background: var(--color-golden);
+      padding: 0.5rem;
+      width: 10em;
+      border-radius: 100px;
+      font-family: var(--font-alt);
+      font-weight: 400;
+      font-size: 20px;
+      cursor: pointer;
+      transition: 1s ease;
+    }
+
+    button:hover {
+      background: var(--color-black);
+      color: var(--color-golden);
+      transform: scale(1.01);
+      transition: 1s ease;
+      font-size: 20px;
+      outline: 1px solid var(--color-golden);
+    }
+
+    button:active {
+      transform: scale(0.9);
+      transition: 1s ease;
+    }
   }
 }
