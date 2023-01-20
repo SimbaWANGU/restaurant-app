@@ -1,0 +1,52 @@
+@mixin flexDirection ($flex, $direction) {
+  display: $flex;
+  flex-direction: $direction;
+}
+
+.feedback-container {
+  margin: auto;
+  height: 70vh;
+  width: 90vw;
+  color: white;
+  overflow: hidden;
+  padding: 3rem 1rem;
+
+  h2 {
+    text-align: center;
+    font-family: var(--font-base);
+    color: var(--color-golden);
+    font-size: 34px;
+  }
+
+  .slide-container {
+    margin: 2rem auto;
+    width: 20vw;
+    height: 256px;
+    border: 5px solid var(--color-golden);
+    text-align: center;
+    transition: .4s ease-in-out;
+    padding: 1rem;
+    border-radius: 2rem;
+    text-align: center;
+    border-style: inset;
+    background-color: var(--color-black);
+
+    p {
+      font-family: var(--font-base);
+      font-size: 24px;
+    }
+  
+    p:nth-of-type(2) {
+      color: var(--color-golden);
+      margin: 0 0 2.5rem 0;
+    }
+
+    span {
+      
+    }
+  }
+
+  .slide-container:hover {
+    transform: scale(1.05);
+  }
+}

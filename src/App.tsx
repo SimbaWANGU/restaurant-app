@@ -13,6 +13,7 @@ import Authenticate from './container/Authenticate/Authenticate'
 import Reservation from './container/Reservation/Reservation'
 import MyReservations from './container/Reservation/MyReservations'
 import Video from './container/Video/Video'
+import Feedback from './container/Feedback/Feedback'
 
 // ! Complete App
 // todo: Add feedback section
@@ -119,6 +120,7 @@ const App = (): ReactElement => {
         <Menu />
         <Chef />
         <Video />
+        <Feedback />
       </div>
     </QueryClientProvider>
   )
