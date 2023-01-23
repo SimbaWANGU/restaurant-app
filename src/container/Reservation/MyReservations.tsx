@@ -36,7 +36,7 @@ const MyReservations = (): ReactElement => {
       closeOnClick: true,
       pauseOnHover: false,
       draggable: true,
-      theme: 'dark'
+      theme: 'light'
     })
 
     return (
