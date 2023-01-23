@@ -1,14 +1,14 @@
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-const giveFeedback = async (emoji: string, feedback: string): Promise<any> => {
+const giveFeedback = async (username: string, emoji: string, feedback: string): Promise<any> => {
   let data
   const response = await fetch('https://restaurant-server-twu5.onrender.com/feedback/create', {
     method: 'post',
     headers: {
       'Content-type': 'application/x-www-form-urlencoded'
     },
-    body: `emoji=${emoji}&feedback=${feedback}`
+    body: `username=${username}&emoji=${emoji}&feedback=${feedback}`
   })
   switch (response.status) {
     case 200:
@@ -79,7 +79,7 @@ const getFeedback = async (): Promise<any> => {
   switch (response.status) {
     case 200:
       data = await response.json()
-      return data.feedback
+      return data.feedbacks
     case 400:
       toast.error('You don&apos;t have access', {
         position: 'top-center',
