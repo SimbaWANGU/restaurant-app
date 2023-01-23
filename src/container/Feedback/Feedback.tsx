@@ -1,10 +1,14 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay } from 'swiper'
 import 'swiper/swiper-bundle.css'
 import './Feedback.scss'
 
-const Feedback = (): ReactElement => {
+interface FeedbackProps {
+  handleOpenFeedbackModal: any
+}
+
+const Feedback: React.FC<FeedbackProps> = ({ handleOpenFeedbackModal }) => {
   return (
     <div className='feedback-container'>
       <h2>Reviews</h2>
@@ -55,7 +59,7 @@ const Feedback = (): ReactElement => {
         </SwiperSlide>
       </Swiper>
       <div className='button-area'>
-        <button>Add Feeback</button>
+        <button onClick={handleOpenFeedbackModal}>Add Feeback</button>
       </div>
     </div>
   )
