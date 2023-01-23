@@ -1,20 +1,20 @@
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-const makeReservation = async (username: string, date: string, time: string, guests: number): Promise<any> => {
+const giveFeedback = async (username: string, emoji: string, feedback: string): Promise<any> => {
   let data
-  const response = await fetch('https://restaurant-server-twu5.onrender.com/reserve/create', {
+  const response = await fetch('https://restaurant-server-twu5.onrender.com/feedback/create', {
     method: 'post',
     headers: {
       'Content-type': 'application/x-www-form-urlencoded'
     },
-    body: `username=${username}&date=${date}&time=${time}&guests=${guests}`
+    body: `username=${username}&emoji=${emoji}&feedback=${feedback}`
   })
   switch (response.status) {
     case 200:
       data = await response.json()
-      if (data.success === 'Resevation has been created') {
-        toast.update('createReservationToast', {
+      if (data.success === 'Feedback has been created') {
+        toast.update('giveFeedbackToast', {
           autoClose: 5000,
           render: data.success,
           type: toast.TYPE.SUCCESS,
@@ -25,22 +25,22 @@ const makeReservation = async (username: string, date: string, time: string, gue
           progress: undefined,
           theme: 'light'
         })
-      } else if (data.error === 'An error occurred' || data.error === 'Incomplete Reservation') {
-        toast.update('createReservationToast', {
+      } else if (data.error === 'An error occurred' || data.error === 'Incomplete Feedback') {
+        toast.update('giveFeedbackToast', {
           autoClose: 5000,
-          render: data.error,
+          render: data.success,
           type: toast.TYPE.ERROR,
           hideProgressBar: true,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: 'dark'
+          theme: 'light'
         })
       }
       break
     case 400:
-      toast.update('createReservationToast', {
+      toast.update('giveFeedbackToast', {
         render: 'You don&apos;t have access',
         autoClose: 5000,
         type: toast.TYPE.ERROR,
@@ -53,7 +53,7 @@ const makeReservation = async (username: string, date: string, time: string, gue
       })
       break
     case 500:
-      toast.update('createReservationToast', {
+      toast.update('giveFeedbackToast', {
         render: 'An error occurred, this is not your fault',
         autoClose: 5000,
         type: toast.TYPE.ERROR,
@@ -68,10 +68,9 @@ const makeReservation = async (username: string, date: string, time: string, gue
   }
 }
 
-const getReservation = async (): Promise<any> => {
+const getFeedback = async (): Promise<any> => {
   let data
-  const user = JSON.parse(localStorage.getItem('gericht-user') as string)
-  const response = await fetch(`https://restaurant-server-twu5.onrender.com/reserve/${user.username as string}`, {
+  const response = await fetch('https://restaurant-server-twu5.onrender.com/feedback', {
     method: 'get',
     headers: {
       'Content-type': 'application/x-www-form-urlencoded'
@@ -80,30 +79,7 @@ const getReservation = async (): Promise<any> => {
   switch (response.status) {
     case 200:
       data = await response.json()
-      if (data.myReservations.length > 0) {
-        toast.success('Gotten your reservations', {
-          position: 'top-center',
-          autoClose: 5000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light'
-        })
-      } else {
-        toast.success('You don&apos;t have any reservations yet...', {
-          position: 'top-center',
-          autoClose: 5000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: 'light'
-        })
-      }
-      return data.myReservations
+      return data.feedbacks
     case 400:
       toast.error('You don&apos;t have access', {
         position: 'top-center',
@@ -131,4 +107,4 @@ const getReservation = async (): Promise<any> => {
   }
 }
 
-export { makeReservation, getReservation }
+export { giveFeedback, getFeedback }

@@ -72,7 +72,7 @@ const Authenticate = (): ReactElement => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: 'dark',
+      theme: 'light',
       toastId: 'createUserToast'
     })
     registerUserToDb()
@@ -88,7 +88,7 @@ const Authenticate = (): ReactElement => {
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: 'dark',
+      theme: 'light',
       toastId: 'loginUserToast'
     })
     loginUserToDb()

@@ -13,6 +13,8 @@ import Authenticate from './container/Authenticate/Authenticate'
 import Reservation from './container/Reservation/Reservation'
 import MyReservations from './container/Reservation/MyReservations'
 import Video from './container/Video/Video'
+import Feedback from './container/Feedback/Feedback'
+import FeedbackForm from './container/Feedback/FeedbackForm'
 
 // ! Complete App
 // todo: Add feedback section
@@ -29,11 +31,12 @@ const App = (): ReactElement => {
   const [isAuthenticateModalOpen, setIsAuthenticateModalOpen] = useState(false)
   const [isReservationModalOpen, setIsReservationModalOpen] = useState(false)
   const [isMyReservationModalOpen, setIsMyReservationModalOpen] = useState(false)
+  const [isAddFeedbackModalOpen, setAddFeedbackModalOpen] = useState(false)
 
   useEffect(() => {
     const body = document.body
 
-    if (isAuthenticateModalOpen || isReservationModalOpen || isMyReservationModalOpen) {
+    if (isAuthenticateModalOpen || isReservationModalOpen || isMyReservationModalOpen || isAddFeedbackModalOpen) {
       body.style.overflow = 'hidden'
     } else {
       body.style.overflow = 'auto'
@@ -42,7 +45,7 @@ const App = (): ReactElement => {
     return () => {
       body.style.overflow = 'auto'
     }
-  }, [isAuthenticateModalOpen, isReservationModalOpen, isMyReservationModalOpen])
+  }, [isAuthenticateModalOpen, isReservationModalOpen, isMyReservationModalOpen, isAddFeedbackModalOpen])
 
   const handleOpenAuthenticationModal = (event: React.MouseEvent): void => {
     event.preventDefault()
@@ -59,12 +62,20 @@ const App = (): ReactElement => {
     setIsMyReservationModalOpen(true)
   }
 
+  const handleOpenFeedbackModal = (event: React.MouseEvent): void => {
+    event.preventDefault()
+    setAddFeedbackModalOpen(true)
+  }
+
   const customStyles = {
     content: {
       margin: 'auto',
       width: '60%',
       background: 'black',
-      color: 'white'
+      color: 'white',
+      overlay: {
+        zIndex: '999'
+      }
     }
   }
 
@@ -85,7 +96,7 @@ const App = (): ReactElement => {
         <Modal
           isOpen={isAuthenticateModalOpen}
           onRequestClose={() => { setIsAuthenticateModalOpen(false) }}
-          contentLabel="Example Modal"
+          contentLabel="Authentication Modal"
           style={customStyles}
           >
           <Authenticate />
@@ -93,7 +104,7 @@ const App = (): ReactElement => {
         <Modal
           isOpen={isReservationModalOpen}
           onRequestClose={() => { setIsReservationModalOpen(false) }}
-          contentLabel="Example Modal"
+          contentLabel="Create Reservation Modal"
           style={customStyles}
         >
           <Reservation />
@@ -101,10 +112,18 @@ const App = (): ReactElement => {
         <Modal
           isOpen={isMyReservationModalOpen}
           onRequestClose={() => { setIsMyReservationModalOpen(false) }}
-          contentLabel="Example Modal"
+          contentLabel="My Reservations Modal"
           style={customStyles2}
           >
           <MyReservations />
+        </Modal>
+        <Modal
+          isOpen={isAddFeedbackModalOpen}
+          onRequestClose={() => { setAddFeedbackModalOpen(false) }}
+          contentLabel='Add Feedback Modal'
+          style={customStyles2}
+        >
+          <FeedbackForm />
         </Modal>
         <Navbar
           handleOpenAuthenticationModal={handleOpenAuthenticationModal}
@@ -119,6 +138,9 @@ const App = (): ReactElement => {
         <Menu />
         <Chef />
         <Video />
+        <Feedback
+          handleOpenFeedbackModal={handleOpenFeedbackModal}
+        />
       </div>
     </QueryClientProvider>
   )

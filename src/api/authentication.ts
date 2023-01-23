@@ -23,7 +23,7 @@ const register = async (username: string, email: string, password: string): Prom
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: 'dark'
+          theme: 'light'
         })
         localStorage.setItem('gericht-user', JSON.stringify(data))
       } else {
@@ -36,7 +36,7 @@ const register = async (username: string, email: string, password: string): Prom
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: 'dark'
+          theme: 'light'
         })
       }
       break
@@ -50,7 +50,7 @@ const register = async (username: string, email: string, password: string): Prom
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: 'dark'
+        theme: 'light'
       })
       break
     case 500:
@@ -63,7 +63,7 @@ const register = async (username: string, email: string, password: string): Prom
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: 'dark'
+        theme: 'light'
       })
       return 'Error'
   }
@@ -91,7 +91,7 @@ const login = async (username: string, password: string): Promise<any> => {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: 'dark'
+          theme: 'light'
         })
         localStorage.setItem('gericht-user', JSON.stringify(data))
       } else {
@@ -104,7 +104,7 @@ const login = async (username: string, password: string): Promise<any> => {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: 'dark'
+          theme: 'light'
         })
       }
       break
@@ -118,7 +118,7 @@ const login = async (username: string, password: string): Promise<any> => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: 'dark'
+        theme: 'light'
       })
       break
     case 500:
@@ -131,7 +131,7 @@ const login = async (username: string, password: string): Promise<any> => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: 'dark'
+        theme: 'light'
       })
       break
   }
@@ -158,7 +158,7 @@ const logout = async (): Promise<any> => {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: 'dark'
+          theme: 'light'
         })
       } else {
         toast.update('logOutUserToast', {
@@ -170,7 +170,7 @@ const logout = async (): Promise<any> => {
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-          theme: 'dark'
+          theme: 'light'
         })
       }
       break
@@ -184,7 +184,7 @@ const logout = async (): Promise<any> => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: 'dark'
+        theme: 'light'
       })
       break
     case 500:
@@ -197,7 +197,7 @@ const logout = async (): Promise<any> => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        theme: 'dark'
+        theme: 'light'
       })
       break
   }
