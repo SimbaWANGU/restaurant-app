@@ -5,10 +5,12 @@
 
 .footer-container {
   background-color: var(--color-black);
+
   @include flexDirection(flex, row);
 
   .logo-section {
     @include flexDirection(flex, row);
+
     flex: 1;
     padding: 1rem;
 
@@ -20,11 +22,11 @@
         object-fit: contain;
       }
     }
-    
   }
 
   .contacts-details {
     flex: 1;
+
     @include flexDirection(flex, column);
 
     .location-details {
@@ -37,6 +39,7 @@
 
     .contact-details {
       margin: 0 auto 2rem auto;
+
       @include flexDirection(flex, row);
 
       a {
