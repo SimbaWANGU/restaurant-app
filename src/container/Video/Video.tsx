@@ -6,6 +6,7 @@ const Video = (): ReactElement => {
   return (
     <div className='video-container'>
       <video
+        data-aos="zoom-in"
         className='video'
         controls
         autoPlay={true}

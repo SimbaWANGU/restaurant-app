@@ -17,7 +17,7 @@ const Image: React.FC<Props> = ({ src, alt }) => {
 
 const Footer = (): ReactElement => {
   return (
-    <div className='footer-container'>
+    <div id='Contacts' className='footer-container'>
       <div className='logo-section'>
         <a href='#Home'>
           <Image src={gericht} alt='logo' />

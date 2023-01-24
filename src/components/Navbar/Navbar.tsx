@@ -53,7 +53,6 @@ const Navbar: React.FC<NavProps> = ({ handleOpenAuthenticationModal, handleOpenM
 
   const { mutate: logoutUserFromDb } = useLogoutUser()
 
-  // add more effects
   const handleLogout = (): void => {
     toast.info('Logging Out, Please wait...', {
       position: 'top-center',
@@ -63,7 +62,7 @@ const Navbar: React.FC<NavProps> = ({ handleOpenAuthenticationModal, handleOpenM
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-      theme: 'dark',
+      theme: 'light',
       toastId: 'logOutUserToast'
     })
     localStorage.removeItem('gericht-user')
@@ -90,8 +89,14 @@ const Navbar: React.FC<NavProps> = ({ handleOpenAuthenticationModal, handleOpenM
         <li>
           <a href='#Menu'>Menu</a>
         </li>
+        {(userName === '')
+          ? <></>
+          : <li>
+              <a href='#' onClick={handleOpenMyReservationsModal}>My Reservations</a>
+            </li>
+        }
         <li>
-          <a href='#' onClick={handleOpenMyReservationsModal}>My Reservations</a>
+          <a href='#Reviews'>Reviews</a>
         </li>
         <li>
           <a href='#Contacts'>Contacts</a>

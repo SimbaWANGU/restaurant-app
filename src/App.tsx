@@ -18,8 +18,6 @@ import FeedbackForm from './container/Feedback/FeedbackForm'
 import Footer from './container/Footer/Footer'
 
 // ! Complete App
-// todo: Add footer
-// todo: Add mobile and tablet versions
 // todo: Add animations
 // todo: Add menu
 
@@ -93,6 +91,7 @@ const App = (): ReactElement => {
     <QueryClientProvider client={queryClient}>
       <div className="App">
         <Modal
+          data-aos="zoom-in"
           isOpen={isAuthenticateModalOpen}
           onRequestClose={() => { setIsAuthenticateModalOpen(false) }}
           contentLabel="Authentication Modal"
@@ -101,6 +100,7 @@ const App = (): ReactElement => {
           <Authenticate />
         </Modal>
         <Modal
+          data-aos="zoom-in"
           isOpen={isReservationModalOpen}
           onRequestClose={() => { setIsReservationModalOpen(false) }}
           contentLabel="Create Reservation Modal"
@@ -109,6 +109,7 @@ const App = (): ReactElement => {
           <Reservation />
         </Modal>
         <Modal
+          data-aos="zoom-in"
           isOpen={isMyReservationModalOpen}
           onRequestClose={() => { setIsMyReservationModalOpen(false) }}
           contentLabel="My Reservations Modal"
@@ -117,6 +118,7 @@ const App = (): ReactElement => {
           <MyReservations />
         </Modal>
         <Modal
+          data-aos="zoom-in"
           isOpen={isAddFeedbackModalOpen}
           onRequestClose={() => { setAddFeedbackModalOpen(false) }}
           contentLabel='Add Feedback Modal'

@@ -16,10 +16,10 @@ const Image: React.FC<ImageProps> = ({ src, alt }) => {
 const Chef = (): ReactElement => {
   return (
     <div className='chef_container'>
-      <div className='image_container'>
+      <div data-aos="flip-left" className='image_container'>
         <Image src={chef} alt='chef' />
       </div>
-      <div>
+      <div data-aos="zoom-in-left">
         <SubHeading title='Chef&apos;s Word' />
         <h2>What We Believe In</h2>
         <p>

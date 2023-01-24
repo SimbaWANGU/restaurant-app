@@ -42,7 +42,7 @@ const Feedback: React.FC<FeedbackProps> = ({ handleOpenFeedbackModal }) => {
 
   if (status === 'loading') {
     return (
-      <div className='feedback-container'>
+      <div id='Reviews' className='feedback-container'>
         <SubHeading title='Reviews' />
         <Swiper
           spaceBetween={50}
@@ -105,7 +105,7 @@ const Feedback: React.FC<FeedbackProps> = ({ handleOpenFeedbackModal }) => {
   }
 
   return (
-    <div id='feedback' className='feedback-container'>
+    <div id='Reviews' className='feedback-container'>
       <SubHeading title='Reviews' />
       <Swiper
         spaceBetween={50}
@@ -124,10 +124,10 @@ const Feedback: React.FC<FeedbackProps> = ({ handleOpenFeedbackModal }) => {
           : (
               data.map((item: Feedbacks) => (
               <SwiperSlide key={item._id}>
-                <div className='slide-container' data-aos="flip-up">
+                <div className='slide-container' data-aos="zoom-in">
                   <p>{item.emoji}</p>
                   <p>{item.feedback}</p>
-                  <p>{item.username}</p>
+                  <p>~ {item.username} ~</p>
                 </div>
               </SwiperSlide>
               ))
