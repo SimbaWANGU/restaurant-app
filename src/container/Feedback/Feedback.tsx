@@ -42,10 +42,43 @@ const Feedback: React.FC<FeedbackProps> = ({ handleOpenFeedbackModal }) => {
 
   if (status === 'loading') {
     return (
-      <div className='empty-reservations'>
-        <h1>
-          Please wait...
-        </h1>
+      <div className='feedback-container'>
+        <SubHeading title='Reviews' />
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={slidesPerView}
+          loop={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: true
+          }}
+          modules={[Autoplay]}
+        >
+          <SwiperSlide>
+            <div className='slide-container' data-aos="flip-up">
+              <p>😀</p>
+              <p>Please wait...</p>
+              <p>Simberella</p>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className='slide-container' data-aos="flip-up">
+              <p>😊</p>
+              <p>While we fetch...</p>
+              <p>Simberella</p>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className='slide-container' data-aos="flip-up">
+              <p>😐</p>
+              <p>The reviews...</p>
+              <p>Simberella</p>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+        <div className='button-area'>
+          <button onClick={handleOpenFeedbackModal}>Add Feeback</button>
+        </div>
       </div>
     )
   }
@@ -100,13 +133,6 @@ const Feedback: React.FC<FeedbackProps> = ({ handleOpenFeedbackModal }) => {
               ))
             )
         }
-        <SwiperSlide>
-          <div className='slide-container' data-aos="flip-up">
-            <p>😀</p>
-            <p>I loved their service, they were very considerate and their food is amazing</p>
-            <p>Simberella</p>
-          </div>
-        </SwiperSlide>
       </Swiper>
       <div className='button-area'>
         <button onClick={handleOpenFeedbackModal}>Add Feeback</button>
