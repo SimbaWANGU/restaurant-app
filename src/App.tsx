@@ -15,11 +15,10 @@ import MyReservations from './container/Reservation/MyReservations'
 import Video from './container/Video/Video'
 import Feedback from './container/Feedback/Feedback'
 import FeedbackForm from './container/Feedback/FeedbackForm'
+import Footer from './container/Footer/Footer'
 
 // ! Complete App
-// todo: Add feedback section
 // todo: Add footer
-// todo: Add video section
 // todo: Add mobile and tablet versions
 // todo: Add animations
 // todo: Add menu
@@ -27,7 +26,7 @@ import FeedbackForm from './container/Feedback/FeedbackForm'
 const queryClient = new QueryClient()
 
 const App = (): ReactElement => {
-  AOS.init({ duration: 800, easing: 'ease-in-out', once: false })
+  AOS.init({ duration: 1500, easing: 'ease-in-out', once: false })
   const [isAuthenticateModalOpen, setIsAuthenticateModalOpen] = useState(false)
   const [isReservationModalOpen, setIsReservationModalOpen] = useState(false)
   const [isMyReservationModalOpen, setIsMyReservationModalOpen] = useState(false)
@@ -141,6 +140,7 @@ const App = (): ReactElement => {
         <Feedback
           handleOpenFeedbackModal={handleOpenFeedbackModal}
         />
+        <Footer />
       </div>
     </QueryClientProvider>
   )
