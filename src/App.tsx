@@ -1,4 +1,5 @@
-import React, { ReactElement, useEffect, useState } from 'react'
+import type { ReactElement } from 'react'
+import React, { useEffect, useState } from 'react'
 import { QueryClientProvider, QueryClient } from 'react-query'
 import './App.scss'
 import AOS from 'aos'
@@ -15,19 +16,12 @@ import MyReservations from './container/Reservation/MyReservations'
 import Video from './container/Video/Video'
 import Feedback from './container/Feedback/Feedback'
 import FeedbackForm from './container/Feedback/FeedbackForm'
-
-// ! Complete App
-// todo: Add feedback section
-// todo: Add footer
-// todo: Add video section
-// todo: Add mobile and tablet versions
-// todo: Add animations
-// todo: Add menu
+import Footer from './container/Footer/Footer'
 
 const queryClient = new QueryClient()
 
 const App = (): ReactElement => {
-  AOS.init({ duration: 800, easing: 'ease-in-out', once: false })
+  AOS.init({ duration: 1500, easing: 'ease-in-out', once: false })
   const [isAuthenticateModalOpen, setIsAuthenticateModalOpen] = useState(false)
   const [isReservationModalOpen, setIsReservationModalOpen] = useState(false)
   const [isMyReservationModalOpen, setIsMyReservationModalOpen] = useState(false)
@@ -94,6 +88,7 @@ const App = (): ReactElement => {
     <QueryClientProvider client={queryClient}>
       <div className="App">
         <Modal
+          data-aos="zoom-in"
           isOpen={isAuthenticateModalOpen}
           onRequestClose={() => { setIsAuthenticateModalOpen(false) }}
           contentLabel="Authentication Modal"
@@ -102,6 +97,7 @@ const App = (): ReactElement => {
           <Authenticate />
         </Modal>
         <Modal
+          data-aos="zoom-in"
           isOpen={isReservationModalOpen}
           onRequestClose={() => { setIsReservationModalOpen(false) }}
           contentLabel="Create Reservation Modal"
@@ -110,6 +106,7 @@ const App = (): ReactElement => {
           <Reservation />
         </Modal>
         <Modal
+          data-aos="zoom-in"
           isOpen={isMyReservationModalOpen}
           onRequestClose={() => { setIsMyReservationModalOpen(false) }}
           contentLabel="My Reservations Modal"
@@ -118,6 +115,7 @@ const App = (): ReactElement => {
           <MyReservations />
         </Modal>
         <Modal
+          data-aos="zoom-in"
           isOpen={isAddFeedbackModalOpen}
           onRequestClose={() => { setAddFeedbackModalOpen(false) }}
           contentLabel='Add Feedback Modal'
@@ -141,6 +139,7 @@ const App = (): ReactElement => {
         <Feedback
           handleOpenFeedbackModal={handleOpenFeedbackModal}
         />
+        <Footer />
       </div>
     </QueryClientProvider>
   )

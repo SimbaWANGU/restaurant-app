@@ -1,4 +1,5 @@
-import React, { ReactElement } from 'react'
+import type { ReactElement } from 'react'
+import React from 'react'
 import SubHeading from '../../components/SubHeading/SubHeading'
 import G from './../../assets/G.png'
 import Knife from './../../assets/knife.png'
@@ -19,7 +20,7 @@ const AboutUs = (): ReactElement => (
     <div className='backgroundLogo'>
       <Image data='zoom-in' src={G} alt='G logo' />
     </div>
-    <div className='foregroundLeft'>
+    <div data-aos="flip-left" className='foregroundLeft'>
       <SubHeading title='About Us' />
       <p>
         We&apos;re a humble family of people who love seeing you happy.
@@ -31,7 +32,7 @@ const AboutUs = (): ReactElement => (
     <div className='knifeLogo'>
       <Image data='fade-up' src={Knife} alt='knife' />
     </div>
-    <div className='foregroundRight'>
+    <div data-aos="flip-right" className='foregroundRight'>
       <SubHeading title='Our History' />
       <p>
         Our patron, Simba Wangu, launched the first Gericht store back in 1998.

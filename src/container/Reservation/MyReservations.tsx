@@ -1,4 +1,5 @@
-import React, { ReactElement } from 'react'
+import type { ReactElement } from 'react'
+import React from 'react'
 import { useQuery } from 'react-query'
 import { ToastContainer, toast } from 'react-toastify'
 import { getReservation } from '../../api/reservation'

@@ -1,4 +1,5 @@
-import React, { ReactElement } from 'react'
+import type { ReactElement } from 'react'
+import React from 'react'
 import SubHeading from '../../components/SubHeading/SubHeading'
 import menu from '../../assets/menu.png'
 import './Menu.scss'
@@ -32,7 +33,7 @@ const Menu = (): ReactElement => {
       <SubHeading title='Menu That Fits You Palatte' />
       <h2>Today&apos;s Special</h2>
       <div className='menu-section'>
-        <div className='wine-section'>
+        <div data-aos="flip-right" className='wine-section'>
           <h3>Wine & Beer</h3>
           <div>
             {wines.map((wine: Wine, index: number) => (
@@ -40,10 +41,10 @@ const Menu = (): ReactElement => {
             ))}
           </div>
         </div>
-        <div>
+        <div data-aos="zoom-in">
           <Image src={menu} alt='mixer' />
         </div>
-        <div className='cocktail-section'>
+        <div data-aos="flip-left" className='cocktail-section'>
           <h3>Cocktails</h3>
           <div>
             {cocktails.map((cocktail: Cocktails, index: number) => (
@@ -52,7 +53,7 @@ const Menu = (): ReactElement => {
           </div>
         </div>
       </div>
-      <button>View More</button>
+      <button data-aos="zoom-in">View More</button>
     </div>
   )
 }

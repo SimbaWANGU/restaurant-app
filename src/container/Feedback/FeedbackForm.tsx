@@ -1,4 +1,5 @@
-import React, { FormEvent, ReactElement, useEffect, useState } from 'react'
+import type { FormEvent, ReactElement } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useMutation, useQueryClient } from 'react-query'
 import { toast, ToastContainer } from 'react-toastify'
 import { giveFeedback } from '../../api/feedback'

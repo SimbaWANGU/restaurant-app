@@ -1,4 +1,5 @@
-import React, { ReactElement, FormEvent, useState, useEffect } from 'react'
+import type { ReactElement, FormEvent } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import { useMutation, useQueryClient } from 'react-query'
 import { makeReservation } from '../../api/reservation'

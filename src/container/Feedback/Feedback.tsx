@@ -6,6 +6,7 @@ import './Feedback.scss'
 import { useQuery } from 'react-query'
 import { getFeedback } from '../../api/feedback'
 import { toast, ToastContainer } from 'react-toastify'
+import SubHeading from '../../components/SubHeading/SubHeading'
 
 interface FeedbackProps {
   handleOpenFeedbackModal: any
@@ -41,10 +42,43 @@ const Feedback: React.FC<FeedbackProps> = ({ handleOpenFeedbackModal }) => {
 
   if (status === 'loading') {
     return (
-      <div className='empty-reservations'>
-        <h1>
-          Please wait...
-        </h1>
+      <div id='Reviews' className='feedback-container'>
+        <SubHeading title='Reviews' />
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={slidesPerView}
+          loop={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: true
+          }}
+          modules={[Autoplay]}
+        >
+          <SwiperSlide>
+            <div className='slide-container' data-aos="flip-up">
+              <p>😀</p>
+              <p>Please wait...</p>
+              <p>Simberella</p>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className='slide-container' data-aos="flip-up">
+              <p>😊</p>
+              <p>While we fetch...</p>
+              <p>Simberella</p>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className='slide-container' data-aos="flip-up">
+              <p>😐</p>
+              <p>The reviews...</p>
+              <p>Simberella</p>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+        <div className='button-area'>
+          <button onClick={handleOpenFeedbackModal}>Add Feeback</button>
+        </div>
       </div>
     )
   }
@@ -71,8 +105,8 @@ const Feedback: React.FC<FeedbackProps> = ({ handleOpenFeedbackModal }) => {
   }
 
   return (
-    <div className='feedback-container'>
-      <h2>Reviews</h2>
+    <div id='Reviews' className='feedback-container'>
+      <SubHeading title='Reviews' />
       <Swiper
         spaceBetween={50}
         slidesPerView={slidesPerView}
@@ -90,22 +124,15 @@ const Feedback: React.FC<FeedbackProps> = ({ handleOpenFeedbackModal }) => {
           : (
               data.map((item: Feedbacks) => (
               <SwiperSlide key={item._id}>
-                <div className='slide-container' data-aos="flip-up">
+                <div className='slide-container' data-aos="zoom-in">
                   <p>{item.emoji}</p>
                   <p>{item.feedback}</p>
-                  <p>{item.username}</p>
+                  <p>~ {item.username} ~</p>
                 </div>
               </SwiperSlide>
               ))
             )
         }
-        <SwiperSlide>
-          <div className='slide-container' data-aos="flip-up">
-            <p>😀</p>
-            <p>I loved their service, they were very considerate and their food is amazing</p>
-            <p>Simberella</p>
-          </div>
-        </SwiperSlide>
       </Swiper>
       <div className='button-area'>
         <button onClick={handleOpenFeedbackModal}>Add Feeback</button>
