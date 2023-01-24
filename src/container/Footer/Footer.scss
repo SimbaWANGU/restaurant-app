@@ -1,0 +1,62 @@
+@mixin flexDirection ($flex, $direction) {
+  display: $flex;
+  flex-direction: $direction;
+}
+
+.footer-container {
+  background-color: var(--color-black);
+  @include flexDirection(flex, row);
+
+  .logo-section {
+    @include flexDirection(flex, row);
+    flex: 1;
+    padding: 1rem;
+
+    a {
+      margin: 2rem auto auto;
+
+      img {
+        height: 2rem;
+        object-fit: contain;
+      }
+    }
+    
+  }
+
+  .contacts-details {
+    flex: 1;
+    @include flexDirection(flex, column);
+
+    .location-details {
+      margin: 2rem auto 2rem auto;
+      color: var(--color-golden);
+      text-align: center;
+      font-family: var(--font-alt);
+      font-size: 18px;
+    }
+
+    .contact-details {
+      margin: 0 auto 2rem auto;
+      @include flexDirection(flex, row);
+
+      a {
+        margin: 0 1rem;
+      }
+
+      .icon {
+        color: #fff;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .footer-container {
+    .contacts-details {
+      .location-details {
+        margin: 2rem auto 1.5rem auto;
+        font-size: 14px;
+      }
+    }
+  }
+}
