@@ -1,4 +1,5 @@
-import React, { ReactElement } from 'react'
+import type { ReactElement } from 'react'
+import React from 'react'
 import SubHeading from '../../components/SubHeading/SubHeading'
 import G from './../../assets/G.png'
 import Knife from './../../assets/knife.png'

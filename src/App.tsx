@@ -1,4 +1,5 @@
-import React, { ReactElement, useEffect, useState } from 'react'
+import type { ReactElement } from 'react'
+import React, { useEffect, useState } from 'react'
 import { QueryClientProvider, QueryClient } from 'react-query'
 import './App.scss'
 import AOS from 'aos'
@@ -16,10 +17,6 @@ import Video from './container/Video/Video'
 import Feedback from './container/Feedback/Feedback'
 import FeedbackForm from './container/Feedback/FeedbackForm'
 import Footer from './container/Footer/Footer'
-
-// ! Complete App
-// todo: Add animations
-// todo: Add menu
 
 const queryClient = new QueryClient()
 

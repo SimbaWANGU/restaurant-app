@@ -1,4 +1,5 @@
-import React, { ReactElement, createRef, useState, FormEvent } from 'react'
+import type { ReactElement, FormEvent } from 'react'
+import React, { createRef, useState } from 'react'
 import { useMutation } from 'react-query'
 import { ToastContainer, toast } from 'react-toastify'
 import { login, register } from '../../api/authentication'
