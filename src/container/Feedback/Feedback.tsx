@@ -6,6 +6,7 @@ import './Feedback.scss'
 import { useQuery } from 'react-query'
 import { getFeedback } from '../../api/feedback'
 import { toast, ToastContainer } from 'react-toastify'
+import SubHeading from '../../components/SubHeading/SubHeading'
 
 interface FeedbackProps {
   handleOpenFeedbackModal: any
@@ -71,8 +72,8 @@ const Feedback: React.FC<FeedbackProps> = ({ handleOpenFeedbackModal }) => {
   }
 
   return (
-    <div className='feedback-container'>
-      <h2>Reviews</h2>
+    <div id='feedback' className='feedback-container'>
+      <SubHeading title='Reviews' />
       <Swiper
         spaceBetween={50}
         slidesPerView={slidesPerView}
